@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AF2E0EA4-792F-4AF8-8D2B-583A9232694D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>PickUp2U</RootNamespace>
+    <AssemblyName>PickUp2U</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Oracle.DataAccess, Version=4.112.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\oraclexe\app\oracle\product\11.2.0\server\odp.net\bin\2.x\Oracle.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DBClass.cs" />
+    <Compile Include="DBClass_user.cs" />
+    <Compile Include="Loginform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Loginform.Designer.cs">
+      <DependentUpon>Loginform.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainOwnerform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainOwnerform.Designer.cs">
+      <DependentUpon>MainOwnerform.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainUserform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainUserform.Designer.cs">
+      <DependentUpon>MainUserform.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrderDetailform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderDetailform.Designer.cs">
+      <DependentUpon>OrderDetailform.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Paymentform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Paymentform.Designer.cs">
+      <DependentUpon>Paymentform.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Progressform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Progressform.Designer.cs">
+      <DependentUpon>Progressform.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Registerform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registerform.Designer.cs">
+      <DependentUpon>Registerform.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchDB2Class.cs" />
+    <Compile Include="SearchDBClass.cs" />
+    <Compile Include="Searchform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Searchform.Designer.cs">
+      <DependentUpon>Searchform.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Shopform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Shopform.Designer.cs">
+      <DependentUpon>Shopform.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Loginform.resx">
+      <DependentUpon>Loginform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainOwnerform.resx">
+      <DependentUpon>MainOwnerform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainUserform.resx">
+      <DependentUpon>MainUserform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderDetailform.resx">
+      <DependentUpon>OrderDetailform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Paymentform.resx">
+      <DependentUpon>Paymentform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Progressform.resx">
+      <DependentUpon>Progressform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Registerform.resx">
+      <DependentUpon>Registerform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Searchform.resx">
+      <DependentUpon>Searchform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shopform.resx">
+      <DependentUpon>Shopform.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

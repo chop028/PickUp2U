@@ -1,0 +1,9 @@
+C:\Users\jewhi\Desktop\Pickup2uu\PickUp2U\PickUp2U\bin\Debug\PickUp2U.exe.config
+C:\Users\jewhi\Desktop\Pickup2uu\PickUp2U\PickUp2U\bin\Debug\PickUp2U.exe
+C:\Users\jewhi\Desktop\Pickup2uu\PickUp2U\PickUp2U\bin\Debug\PickUp2U.pdb
+C:\Users\jewhi\Desktop\Pickup2uu\PickUp2U\PickUp2U\obj\Debug\PickUp2U.csproj.AssemblyReference.cache
+C:\Users\jewhi\Desktop\Pickup2uu\PickUp2U\PickUp2U\obj\Debug\PickUp2U.Properties.Resources.resources
+C:\Users\jewhi\Desktop\Pickup2uu\PickUp2U\PickUp2U\obj\Debug\PickUp2U.csproj.GenerateResource.cache
+C:\Users\jewhi\Desktop\Pickup2uu\PickUp2U\PickUp2U\obj\Debug\PickUp2U.csproj.CoreCompileInputs.cache
+C:\Users\jewhi\Desktop\Pickup2uu\PickUp2U\PickUp2U\obj\Debug\PickUp2U.exe
+C:\Users\jewhi\Desktop\Pickup2uu\PickUp2U\PickUp2U\obj\Debug\PickUp2U.pdb
