@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oracle.DataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,22 +14,25 @@ namespace PickUp2U
     public partial class Searchform : Form
     {
         SearchDBClass dbSc;
+
+        int USER_ID = 1;
+        
         public Searchform()
         {
             InitializeComponent();
             dbSc = new SearchDBClass();
+
+            dbSc.DB_Open();
+
+            DataView dv = dbSc.PhoneTable.DefaultView;
+            dv.RowFilter = "PRODUCT_STATUS = 0";
+
+            sc_list.DataSource = dv;
+
+            USERID.Text = USER_ID.ToString();
         }
         private void sc_Pdlist_Click(object sender, EventArgs e)
         {
-            try
-            {
-                dbSc.DB_Open();
-                sc_list.DataSource = dbSc.PhoneTable.DefaultView;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
         }
 
         private void sc_btn_Click(object sender, EventArgs e)
@@ -62,29 +66,6 @@ namespace PickUp2U
                 else
                 {
                     MessageBox.Show("해당하는 제품이 없습니다.");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void sc_hold_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                // 클릭한 셀의 행 인덱스를 가져옵니다.
-                int rowIndex = e.RowIndex;
-
-                // 만약 유효한 행이라면
-                if (rowIndex >= 0 && rowIndex < sc_hold.Rows.Count)
-                {
-                    // 클릭한 행에서 PRODUCT_ID 값을 가져옵니다.
-                    string productId = sc_hold.Rows[rowIndex].Cells["PRODUCT_ID"].Value.ToString();
-
-                    // sc_Productid 텍스트 박스에 PRODUCT_ID 값을 할당합니다.
-                    sc_Productid.Text = productId;
                 }
             }
             catch (Exception ex)
@@ -214,41 +195,67 @@ namespace PickUp2U
                 MessageBox.Show(ex.Message);
             }
         }
-        private void sc_clear_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                basket_arr.Clear();
-                basket_num_arr.Clear();
-                sc_basket.Items.Clear();
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+        private void sc_basket_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
 
-        private void sc_clear_Click1(object sender, EventArgs e)
+        private void sc_pay_Click(object sender, EventArgs e)
         {
             try
             {
+                string connectionString = "User Id=admin; Password=admin; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = xe)) )";
 
-                foreach (string price in basket_price_arr)
+                using (var connection = new OracleConnection(connectionString))
                 {
-                    listBox1.Items.Clear();
-                    listBox1.Items.AddRange(basket_price_arr.ToArray());
+                    connection.Open();
+
+                    // ORDER_ID의 최대값을 가져오는 쿼리
+                    string getMaxIdQuery = "SELECT MAX(ORDER_ID) FROM ORDERS";
+
+                    // 쿼리를 실행하기 위한 명령 객체 생성
+                    using (var command = new OracleCommand(getMaxIdQuery, connection))
+                    {
+                        // 쿼리 실행 후 결과 가져오기
+                        object result = command.ExecuteScalar();
+
+                        int newOrderId = 1; // 기본값 1로 설정
+
+                        // 결과가 DB에서 정상적으로 조회된 경우, 1을 더해 새로운 ORDER_ID 설정
+                        if (result != DBNull.Value)
+                        {
+                            newOrderId = Convert.ToInt32(result) + 1;
+                        }
+
+                        // 현재 시간을 가져와서 형식에 맞게 변환
+                        DateTime currentTime = DateTime.Now;
+                        string formattedDate = currentTime.ToString("yyyy-MM-dd HH:mm:ss");
+
+                        // 삽입 쿼리 생성
+                        string insertQuery = $"INSERT INTO ORDERS (ORDER_ID, USER_ID, SHOP_ID, ORDER_TIME) VALUES ({newOrderId}, '{USER_ID}', 20000 , TO_TIMESTAMP('{formattedDate}', 'YYYY-MM-DD HH24:MI:SS'))";
+
+                        // 삽입 쿼리 실행
+                        using (var insertCommand = new OracleCommand(insertQuery, connection))
+                        {
+                            int rowsAffected = insertCommand.ExecuteNonQuery();
+
+                            if (rowsAffected > 0)
+                            {
+                                MessageBox.Show("주문이 완료되었습니다.");
+                            }
+                            else
+                            {
+                                MessageBox.Show("주문에 실패했습니다.");
+                            }
+                        }
+                    }
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-        }
-
-        private void sc_basket_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

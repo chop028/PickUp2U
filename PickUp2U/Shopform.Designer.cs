@@ -167,6 +167,7 @@ namespace PickUp2U
             this.Controls.Add(this.label1);
             this.Name = "Shopform";
             this.Text = "Shop";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Shopform_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DBGrid)).EndInit();
             this.ResumeLayout(false);

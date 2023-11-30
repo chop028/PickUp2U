@@ -107,15 +107,12 @@ namespace PickUp2U
                 try
                 {
 
-                // 해당 제품을 참조하는 레코드를 찾습니다.
                 DataRow[] productRows = dbc.PhoneTable.Select($"PRODUCT_ID = {Pd_id.Text}");
 
-                // 제품을 찾았을 때 PRODUCT_STATUS 값을 1로 변경합니다.
                 if (productRows.Length > 0)
                 {
                     productRows[0]["PRODUCT_STATUS"] = 1;
 
-                    // 변경된 내용을 데이터베이스에 업데이트합니다.
                     dbc.DBAdapter.Update(dbc.DS, "PRODUCTS");
 
 

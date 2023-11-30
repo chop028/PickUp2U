@@ -38,20 +38,20 @@ namespace PickUp2U
             try
             {
                 string connectionString = "User Id=admin; Password=admin; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = xe)) ); ";
-                string productCommandString = "SELECT * FROM PRODUCT";
-                string shopCommandString = "SELECT * FROM SHOP"; // 새로운 테이블 쿼리 추가
+                string productCommandString = "SELECT * FROM PRODUCTS";
+                string shopCommandString = "SELECT * FROM SHOPS"; // 새로운 테이블 쿼리 추가
 
                 dBAdapter = new OracleDataAdapter(productCommandString, connectionString);
                 myCommandBuilder = new OracleCommandBuilder(dBAdapter);
                 dS = new DataSet();
-                dBAdapter.Fill(dS, "PRODUCT");
-                phoneTable = dS.Tables["PRODUCT"];
+                dBAdapter.Fill(dS, "PRODUCTS");
+                phoneTable = dS.Tables["PRODUCTS"];
 
                 // 새로운 테이블 로드
                 dBAdapter = new OracleDataAdapter(shopCommandString, connectionString);
                 myCommandBuilder = new OracleCommandBuilder(dBAdapter);
-                dBAdapter.Fill(dS, "SHOP");
-                shopTable = dS.Tables["SHOP"];
+                dBAdapter.Fill(dS, "SHOPS");
+                shopTable = dS.Tables["SHOPS"];
             }
             catch (DataException DE)
             {
@@ -64,13 +64,13 @@ namespace PickUp2U
             try
             {
                 string connectionString = "User Id=admin; Password=admin; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = xe)) ); ";
-                string commandString = "SELECT * FROM PRODUCT";
+                string commandString = "SELECT * FROM PRODUCTS";
                 dBAdapter = new OracleDataAdapter(commandString, connectionString);
                 myCommandBuilder = new OracleCommandBuilder(dBAdapter);
                 dS = new DataSet();
-                dBAdapter.Fill(dS, "product");
+                dBAdapter.Fill(dS, "products");
 
-                phoneTable = dS.Tables["product"];
+                phoneTable = dS.Tables["products"];
             }
             catch (DataException DE)
             {
