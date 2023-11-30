@@ -38,15 +38,13 @@ namespace PickUp2U
             try
             {
                 string connectionString = "User Id=admin; Password=admin; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = xe)) ); ";
-                string commandString = "SELECT * FROM shop";
-                //string commandString = "SELECT shop_name, shop_location FROM shop"; 
+                string commandString = "SELECT * FROM shops"; 
+                                                            
                 dBAdapter = new OracleDataAdapter(commandString, connectionString);
                 myCommandBuilder = new OracleCommandBuilder(dBAdapter);
                 dS = new DataSet();
-                dBAdapter.Fill(dS, "shop");
-                phoneTable = dS.Tables["shop"];
-
-
+                dBAdapter.Fill(dS, "shops"); 
+                phoneTable = dS.Tables["shops"]; 
             }
             catch (DataException DE)
             {
@@ -59,19 +57,19 @@ namespace PickUp2U
             try
             {
                 string connectionString = "User Id=admin; Password=admin; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = xe)) ); ";
-                string commandString = "SELECT * FROM PRODUCT";
+                string commandString = "SELECT * FROM products";
                 dBAdapter = new OracleDataAdapter(commandString, connectionString);
                 myCommandBuilder = new OracleCommandBuilder(dBAdapter);
                 dS = new DataSet();
-                dBAdapter.Fill(dS, "product");
-
-                phoneTable = dS.Tables["product"];
+                dBAdapter.Fill(dS, "products"); 
+                phoneTable = dS.Tables["products"]; 
             }
             catch (DataException DE)
             {
                 MessageBox.Show(DE.Message);
             }
         }
+
 
 
         public void DB_Open()

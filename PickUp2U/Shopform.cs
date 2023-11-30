@@ -18,6 +18,9 @@ namespace PickUp2U
         {
             InitializeComponent();
             dbc = new DBClass();
+
+            dbc.DB_Open();
+            DBGrid.DataSource = dbc.PhoneTable.DefaultView;
         }
         private void shop_list_Click(object sender, EventArgs e)
         {
@@ -42,7 +45,7 @@ namespace PickUp2U
                     txtid.Text = selectedRow["shop_name"].ToString();
                     txtName.Text = selectedRow["shop_location"].ToString();
                     txtNumber.Text = selectedRow["shop_Number"].ToString();
-                    shop_id.Text = "매장번호 = " + selectedRow["shop_id"].ToString();
+                    shop_id.Text = selectedRow["shop_id"].ToString();
 
                 }
             }
@@ -50,7 +53,6 @@ namespace PickUp2U
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
 
         private void Shop_addBtn_Click(object sender, EventArgs e)
@@ -118,9 +120,8 @@ namespace PickUp2U
             {
                 if (!string.IsNullOrEmpty(shop_id.Text))
                 {
-                    string selectedShopId = shop_id.Text.Replace("매장번호 = ", "");
 
-                    DataRow[] rows = dbc.PhoneTable.Select($"SHOP_ID = {selectedShopId}");
+                    DataRow[] rows = dbc.PhoneTable.Select($"SHOP_ID = {shop_id.Text}");
 
                     if (rows.Length > 0)
                     {
@@ -182,7 +183,7 @@ namespace PickUp2U
 
 
         // ↑ SHOP 관리  ↓PRODUCT 관리
-
+        /*
         private void Product_list_Click(object sender, EventArgs e)
         {
             try
@@ -310,22 +311,21 @@ namespace PickUp2U
 
         private void DBGrid_PD_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
-                if (e.RowIndex >= 0)
-                {
-                    DataRowView selectedRow = (DataRowView)DBGrid_PD.Rows[e.RowIndex].DataBoundItem;
 
-                    Pd_name.Text = selectedRow["PRODUCT_NAME"].ToString();
-                    Pd_price.Text = selectedRow["PRICE"].ToString();
-                    Pd_stock.Text = selectedRow["STOCK_QUANTITY"].ToString();
-                    Pd_id.Text = selectedRow["PRODUCT_ID"].ToString();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
         }
+
+        */
+
+        private void Shopform_Load(object sender, EventArgs e)
+        {
+            dbc.DB_Open();
+            DBGrid.DataSource = dbc.PhoneTable.DefaultView;
+        }
+
+        private void DBGrid_PD_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
     }
 }

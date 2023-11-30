@@ -108,7 +108,7 @@ namespace PickUp2U
             // sc_hold
             // 
             this.sc_hold.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.sc_hold.Location = new System.Drawing.Point(43, 148);
+            this.sc_hold.Location = new System.Drawing.Point(43, 134);
             this.sc_hold.Margin = new System.Windows.Forms.Padding(2);
             this.sc_hold.Name = "sc_hold";
             this.sc_hold.RowHeadersWidth = 82;
@@ -119,7 +119,7 @@ namespace PickUp2U
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(41, 328);
+            this.label3.Location = new System.Drawing.Point(41, 306);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(57, 12);
@@ -128,18 +128,19 @@ namespace PickUp2U
             // 
             // sc_Pdlist
             // 
-            this.sc_Pdlist.Location = new System.Drawing.Point(401, 322);
+            this.sc_Pdlist.Location = new System.Drawing.Point(401, 300);
             this.sc_Pdlist.Margin = new System.Windows.Forms.Padding(2);
             this.sc_Pdlist.Name = "sc_Pdlist";
             this.sc_Pdlist.Size = new System.Drawing.Size(52, 24);
             this.sc_Pdlist.TabIndex = 23;
             this.sc_Pdlist.Text = "조회";
             this.sc_Pdlist.UseVisualStyleBackColor = true;
+            this.sc_Pdlist.Click += new System.EventHandler(this.sc_Pdlist_Click);
             // 
             // sc_list
             // 
             this.sc_list.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.sc_list.Location = new System.Drawing.Point(43, 383);
+            this.sc_list.Location = new System.Drawing.Point(43, 328);
             this.sc_list.Margin = new System.Windows.Forms.Padding(2);
             this.sc_list.Name = "sc_list";
             this.sc_list.RowHeadersWidth = 82;
@@ -149,7 +150,7 @@ namespace PickUp2U
             // 
             // sc_in
             // 
-            this.sc_in.Location = new System.Drawing.Point(201, 540);
+            this.sc_in.Location = new System.Drawing.Point(201, 485);
             this.sc_in.Margin = new System.Windows.Forms.Padding(2);
             this.sc_in.Name = "sc_in";
             this.sc_in.Size = new System.Drawing.Size(96, 22);
@@ -218,7 +219,7 @@ namespace PickUp2U
             // 
             this.sc_total.AutoSize = true;
             this.sc_total.Font = new System.Drawing.Font("굴림", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.sc_total.Location = new System.Drawing.Point(556, 435);
+            this.sc_total.Location = new System.Drawing.Point(559, 361);
             this.sc_total.Name = "sc_total";
             this.sc_total.Size = new System.Drawing.Size(114, 24);
             this.sc_total.TabIndex = 34;
@@ -226,7 +227,7 @@ namespace PickUp2U
             // 
             // sc_pay
             // 
-            this.sc_pay.Location = new System.Drawing.Point(603, 540);
+            this.sc_pay.Location = new System.Drawing.Point(605, 446);
             this.sc_pay.Margin = new System.Windows.Forms.Padding(2);
             this.sc_pay.Name = "sc_pay";
             this.sc_pay.Size = new System.Drawing.Size(126, 22);
@@ -236,7 +237,7 @@ namespace PickUp2U
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(790, 540);
+            this.button7.Location = new System.Drawing.Point(792, 446);
             this.button7.Margin = new System.Windows.Forms.Padding(2);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(126, 22);
@@ -267,6 +268,7 @@ namespace PickUp2U
             this.Controls.Add(this.groupBox1);
             this.Name = "Searchform";
             this.Text = "Search";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sc_hold)).EndInit();

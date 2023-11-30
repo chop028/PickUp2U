@@ -53,6 +53,7 @@ namespace PickUp2U
             this.주문하기ToolStripMenuItem.Name = "주문하기ToolStripMenuItem";
             this.주문하기ToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.주문하기ToolStripMenuItem.Text = "주문 하기";
+            this.주문하기ToolStripMenuItem.Click += new System.EventHandler(this.주문하기ToolStripMenuItem_Click);
             // 
             // 픽업정보ToolStripMenuItem
             // 

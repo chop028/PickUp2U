@@ -31,11 +31,11 @@ namespace PickUp2U
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.등록ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.조회ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.매장등록ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.상품등록ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.조회ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.상품조회ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.픽업관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -61,6 +61,20 @@ namespace PickUp2U
             this.등록ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
             this.등록ToolStripMenuItem.Text = "등록";
             // 
+            // 매장등록ToolStripMenuItem
+            // 
+            this.매장등록ToolStripMenuItem.Name = "매장등록ToolStripMenuItem";
+            this.매장등록ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.매장등록ToolStripMenuItem.Text = "매장 등록";
+            this.매장등록ToolStripMenuItem.Click += new System.EventHandler(this.매장등록ToolStripMenuItem_Click);
+            // 
+            // 상품등록ToolStripMenuItem
+            // 
+            this.상품등록ToolStripMenuItem.Name = "상품등록ToolStripMenuItem";
+            this.상품등록ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.상품등록ToolStripMenuItem.Text = "상품 등록";
+            this.상품등록ToolStripMenuItem.Click += new System.EventHandler(this.상품등록ToolStripMenuItem_Click);
+            // 
             // 조회ToolStripMenuItem
             // 
             this.조회ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -68,6 +82,12 @@ namespace PickUp2U
             this.조회ToolStripMenuItem.Name = "조회ToolStripMenuItem";
             this.조회ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
             this.조회ToolStripMenuItem.Text = "조회";
+            // 
+            // 상품조회ToolStripMenuItem
+            // 
+            this.상품조회ToolStripMenuItem.Name = "상품조회ToolStripMenuItem";
+            this.상품조회ToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.상품조회ToolStripMenuItem.Text = "상품 조회";
             // 
             // 관리ToolStripMenuItem
             // 
@@ -77,28 +97,10 @@ namespace PickUp2U
             this.관리ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
             this.관리ToolStripMenuItem.Text = "관리";
             // 
-            // 매장등록ToolStripMenuItem
-            // 
-            this.매장등록ToolStripMenuItem.Name = "매장등록ToolStripMenuItem";
-            this.매장등록ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.매장등록ToolStripMenuItem.Text = "매장 등록";
-            // 
-            // 상품등록ToolStripMenuItem
-            // 
-            this.상품등록ToolStripMenuItem.Name = "상품등록ToolStripMenuItem";
-            this.상품등록ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.상품등록ToolStripMenuItem.Text = "상품 등록";
-            // 
-            // 상품조회ToolStripMenuItem
-            // 
-            this.상품조회ToolStripMenuItem.Name = "상품조회ToolStripMenuItem";
-            this.상품조회ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.상품조회ToolStripMenuItem.Text = "상품 조회";
-            // 
             // 픽업관리ToolStripMenuItem
             // 
             this.픽업관리ToolStripMenuItem.Name = "픽업관리ToolStripMenuItem";
-            this.픽업관리ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.픽업관리ToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.픽업관리ToolStripMenuItem.Text = "픽업 관리";
             // 
             // MainOwnerform

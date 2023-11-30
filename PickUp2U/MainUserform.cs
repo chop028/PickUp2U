@@ -16,5 +16,14 @@ namespace PickUp2U
         {
             InitializeComponent();
         }
+
+        Searchform search;
+
+        private void 주문하기ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            search = new Searchform(); //Form2
+            search.MdiParent = this;
+            search.Show();  //Mdi폼의 자식은 Show()모달리스만 사용 가능
+        }
     }
 }

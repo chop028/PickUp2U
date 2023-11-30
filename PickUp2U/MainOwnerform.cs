@@ -16,5 +16,24 @@ namespace PickUp2U
         {
             InitializeComponent();
         }
+
+        private void 매장등록ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            shop = new Shopform();
+            shop.MdiParent = this;
+            shop.Show();
+        }
+
+        Shopform shop;
+        Productform product;
+
+        private void 상품등록ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            product = new Productform();
+            product.MdiParent = this;
+            product .Show();  
+        }
     }
 }

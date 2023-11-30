@@ -139,6 +139,7 @@ namespace PickUp2U
             this.showList.TabIndex = 13;
             this.showList.Text = "정보 보기";
             this.showList.UseVisualStyleBackColor = true;
+            this.showList.Click += new System.EventHandler(this.showList_Click);
             // 
             // button4
             // 
