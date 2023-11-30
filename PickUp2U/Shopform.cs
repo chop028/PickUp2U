@@ -20,7 +20,11 @@ namespace PickUp2U
             dbc = new DBClass();
 
             dbc.DB_Open();
-            DBGrid.DataSource = dbc.PhoneTable.DefaultView;
+
+            DataView dv = dbc.PhoneTable.DefaultView;
+            dv.RowFilter = "SHOP_STATUS = 0";
+
+            DBGrid.DataSource = dv;
         }
         private void shop_list_Click(object sender, EventArgs e)
         {
@@ -44,7 +48,7 @@ namespace PickUp2U
 
                     txtid.Text = selectedRow["shop_name"].ToString();
                     txtName.Text = selectedRow["shop_location"].ToString();
-                    txtNumber.Text = selectedRow["shop_Number"].ToString();
+                    txtNumber.Text = selectedRow["shop_TELEPHONE"].ToString();
                     shop_id.Text = selectedRow["shop_id"].ToString();
 
                 }
@@ -89,14 +93,15 @@ namespace PickUp2U
                 newRow["SHOP_ID"] = newShopId.ToString();
                 newRow["PRODUCT_ID"] = DBNull.Value; // NULL
                 newRow["SHOP_NAME"] = shopName;
-                newRow["SHOP_NUMBER"] = shopNumber;
+                newRow["SHOP_TELEPHONE"] = shopNumber;
                 newRow["SHOP_LOCATION"] = shopLocation;
+                newRow["SHOP_STATUS"] = 0;
 
 
                 dbc.PhoneTable.Rows.Add(newRow);
 
 
-                dbc.DBAdapter.Update(dbc.DS, "shop");
+                dbc.DBAdapter.Update(dbc.DS, "shops");
 
 
                 dbc.DB_Open();
@@ -116,21 +121,22 @@ namespace PickUp2U
                 MessageBox.Show("삭제할 매장번호를 선택하세요.");
                 return;
             }
+
             try
             {
                 if (!string.IsNullOrEmpty(shop_id.Text))
                 {
-
                     DataRow[] rows = dbc.PhoneTable.Select($"SHOP_ID = {shop_id.Text}");
 
                     if (rows.Length > 0)
                     {
-                        rows[0].Delete();
+                        // 데이터의 SHOP_STATUS 값을 1로 변경합니다.
+                        rows[0]["SHOP_STATUS"] = 1;
 
+                        // 변경된 내용을 데이터베이스에 반영합니다.
+                        dbc.DBAdapter.Update(dbc.DS, "shops");
 
-                        dbc.DBAdapter.Update(dbc.DS, "shop");
-
-
+                        // 다시 데이터를 불러와서 업데이트된 정보를 보여줍니다.
                         dbc.DB_Open();
                         DBGrid.DataSource = dbc.PhoneTable.DefaultView;
                     }
@@ -150,6 +156,7 @@ namespace PickUp2U
             }
         }
 
+
         private void Shop_UdBtn_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(shop_id.Text) || string.IsNullOrWhiteSpace(txtid.Text) || string.IsNullOrWhiteSpace(txtName.Text) || string.IsNullOrWhiteSpace(txtNumber.Text))
@@ -165,11 +172,11 @@ namespace PickUp2U
             if (rows.Length > 0)
             {
                 rows[0]["SHOP_NAME"] = txtid.Text;
-                rows[0]["SHOP_NUMBER"] = txtNumber.Text;
+                rows[0]["SHOP_TELEPHONE"] = txtNumber.Text;
                 rows[0]["SHOP_LOCATION"] = txtName.Text;
 
 
-                dbc.DBAdapter.Update(dbc.DS, "shop");
+                dbc.DBAdapter.Update(dbc.DS, "shops");
 
 
                 dbc.DB_Open();
