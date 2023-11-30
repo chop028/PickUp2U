@@ -41,10 +41,8 @@ namespace PickUp2U
             {
                 string itemName = sc_item.Text;
 
-                // SearchDB2Class의 인스턴스 생성
                 SearchDB2Class searchDB = new SearchDB2Class();
 
-                // SearchDB2Class의 DB_Open 메서드 호출
                 searchDB.DB_Open();
 
                 DataView dv = searchDB.PhoneTable.DefaultView;
@@ -57,7 +55,6 @@ namespace PickUp2U
                 {
                     productId = dv[0]["PRODUCT_ID"].ToString();
 
-                    // SearchDB2Class의 ShopTable을 이용하여 필터링
                     DataView shopView = new DataView(searchDB.ShopTable);
                     shopView.RowFilter = $"PRODUCT_ID = '{productId}'";
 
@@ -78,16 +75,12 @@ namespace PickUp2U
         {
             try
             {
-                // 클릭한 셀의 행 인덱스를 가져옵니다.
                 int rowIndex = e.RowIndex;
 
-                // 만약 유효한 행이라면
                 if (rowIndex >= 0 && rowIndex < sc_list.Rows.Count)
                 {
-                    // 클릭한 행에서 PRODUCT_ID 값을 가져옵니다.
                     string productId = sc_list.Rows[rowIndex].Cells["PRODUCT_ID"].Value.ToString();
 
-                    // sc_Productid 텍스트 박스에 PRODUCT_ID 값을 할당합니다.
                     sc_Productid.Text = productId;
                 }
             }
@@ -131,7 +124,6 @@ namespace PickUp2U
                     basket_arr.Add(productId);
                     basket_num_arr.Add("1");
 
-                    // 새 제품 추가 시에는 가격 배열에 해당하는 제품의 가격을 가져와 저장합니다.
                     SearchDB2Class searchDB = new SearchDB2Class();
                     searchDB.DB_Open();
 
@@ -140,7 +132,6 @@ namespace PickUp2U
 
                     if (productView.Count > 0)
                     {
-                        // 제품 가격을 가져와서 수량과 곱한 값을 basket_price_arr에 추가합니다.
                         string productPrice = productView[0]["PRICE"].ToString();
                         int price = int.Parse(productPrice);
                         int quantity = int.Parse(basket_num_arr[basket_arr.Count - 1]);
@@ -175,7 +166,6 @@ namespace PickUp2U
 
 
                         int totalPriceC = 0;
-                        // basket_price_arr에 있는 모든 숫자 더하기
                         for (int j = 0; j < basket_arr.Count; j++)
                         {
                             int pPrice = int.Parse(basket_price_arr[j]);
@@ -184,7 +174,6 @@ namespace PickUp2U
                             totalPriceC += pPrice * pquantity;
                         }
 
-                        // 합계를 sc_total에 표시
                         sc_total.Text = "총 금액 :" + totalPriceC.ToString();
 
                     }
@@ -211,42 +200,67 @@ namespace PickUp2U
                 {
                     connection.Open();
 
-                    // ORDER_ID의 최대값을 가져오는 쿼리
-                    string getMaxIdQuery = "SELECT MAX(ORDER_ID) FROM ORDERS";
+                    string getMaxProductOrderIdQuery = "SELECT MAX(PRODUCT_ORDER_ID) FROM PRODUCT_ORDERS";
 
-                    // 쿼리를 실행하기 위한 명령 객체 생성
-                    using (var command = new OracleCommand(getMaxIdQuery, connection))
+                    using (var maxProductOrderIdCommand = new OracleCommand(getMaxProductOrderIdQuery, connection))
                     {
-                        // 쿼리 실행 후 결과 가져오기
-                        object result = command.ExecuteScalar();
+                        object productOrderIdResult = maxProductOrderIdCommand.ExecuteScalar();
+                        int productOrderId = 40000;
 
-                        int newOrderId = 1; // 기본값 1로 설정
-
-                        // 결과가 DB에서 정상적으로 조회된 경우, 1을 더해 새로운 ORDER_ID 설정
-                        if (result != DBNull.Value)
+                        if (productOrderIdResult != DBNull.Value)
                         {
-                            newOrderId = Convert.ToInt32(result) + 1;
+                            productOrderId = Convert.ToInt32(productOrderIdResult) + 1;
                         }
 
-                        // 현재 시간을 가져와서 형식에 맞게 변환
-                        DateTime currentTime = DateTime.Now;
-                        string formattedDate = currentTime.ToString("yyyy-MM-dd HH:mm:ss");
+                        string getMaxIdQuery = "SELECT MAX(ORDER_ID) FROM ORDERS";
 
-                        // 삽입 쿼리 생성
-                        string insertQuery = $"INSERT INTO ORDERS (ORDER_ID, USER_ID, SHOP_ID, ORDER_TIME) VALUES ({newOrderId}, '{USER_ID}', 20000 , TO_TIMESTAMP('{formattedDate}', 'YYYY-MM-DD HH24:MI:SS'))";
-
-                        // 삽입 쿼리 실행
-                        using (var insertCommand = new OracleCommand(insertQuery, connection))
+                        using (var command = new OracleCommand(getMaxIdQuery, connection))
                         {
-                            int rowsAffected = insertCommand.ExecuteNonQuery();
+                            object result = command.ExecuteScalar();
 
-                            if (rowsAffected > 0)
+                            int newOrderId = 1;
+
+                            if (result != DBNull.Value)
                             {
-                                MessageBox.Show("주문이 완료되었습니다.");
+                                newOrderId = Convert.ToInt32(result) + 1;
                             }
-                            else
+
+                            DateTime currentTime = DateTime.Now;
+                            string formattedDate = currentTime.ToString("yyyy-MM-dd HH:mm:ss");
+
+                            string insertQuery = $"INSERT INTO ORDERS (ORDER_ID, USER_ID, SHOP_ID, ORDER_TIME) VALUES ({newOrderId}, '{USER_ID}', 20000, TO_TIMESTAMP('{formattedDate}', 'YYYY-MM-DD HH24:MI:SS'))";
+
+                            using (var insertCommand = new OracleCommand(insertQuery, connection))
                             {
-                                MessageBox.Show("주문에 실패했습니다.");
+                                int rowsAffected = insertCommand.ExecuteNonQuery();
+
+                                if (rowsAffected > 0)
+                                {
+                                    int productId = 10000;
+                                    int orderQuantity = 3;
+                                    int orderAmount = 1800;
+                                    int total = 5400;
+
+                                    string productInsertQuery = $"INSERT INTO PRODUCT_ORDERS (PRODUCT_ORDER_ID, ORDER_ID, PRODUCT_ID, ORDER_QUANTITY, ORDER_AMOUNT, TOTAL) VALUES ({productOrderId}, {newOrderId}, {productId}, {orderQuantity}, {orderAmount}, {total})";
+
+                                    using (var productInsertCommand = new OracleCommand(productInsertQuery, connection))
+                                    {
+                                        int productRowsAffected = productInsertCommand.ExecuteNonQuery();
+
+                                        if (productRowsAffected > 0)
+                                        {
+                                            MessageBox.Show("제품 주문이 완료되었습니다.");
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("제품 주문에 실패했습니다.");
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("주문에 실패했습니다.");
+                                }
                             }
                         }
                     }
@@ -256,6 +270,8 @@ namespace PickUp2U
             {
                 MessageBox.Show(ex.Message);
             }
+
+
         }
     }
 }
