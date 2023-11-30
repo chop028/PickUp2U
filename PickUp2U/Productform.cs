@@ -17,12 +17,18 @@ namespace PickUp2U
         {
             InitializeComponent();
             dbc = new DBClass();
+
+
+            dbc.DB_Open_Product();
+
+            DataView dv = dbc.PhoneTable.DefaultView;
+            dv.RowFilter = "PRODUCT_STATUS = 0";
+
+            DBGrid_PD.DataSource = dv;
         }
 
         private void Productform_Load(object sender, EventArgs e)
         {
-            dbc.DB_Open_Product();
-            DBGrid_PD.DataSource = dbc.PhoneTable.DefaultView;
         }
 
         private void Pd_addBtn_Click(object sender, EventArgs e)
@@ -55,13 +61,14 @@ namespace PickUp2U
                 newProductRow["PRODUCT_NAME"] = productName;
                 newProductRow["PRICE"] = productPrice;
                 newProductRow["STOCK_QUANTITY"] = productStock;
+                newProductRow["PRODUCT_STATUS"] = 0;
 
                 dbc.PhoneTable.Rows.Add(newProductRow);
 
-                dbc.DBAdapter.Update(dbc.DS, "product");
+                dbc.DBAdapter.Update(dbc.DS, "products");
 
-                dbc.DB_Open_Product();
-                DBGrid_PD.DataSource = dbc.PhoneTable.DefaultView;
+                //dbc.DB_Open_Product();
+                //DBGrid_PD.DataSource = dbc.PhoneTable.DefaultView;
             }
             catch (Exception ex)
             {
@@ -100,20 +107,20 @@ namespace PickUp2U
                 try
                 {
 
-                    // SHOP 테이블에서 해당 제품을 참조하는 레코드를 삭제합니다.
-                    DataRow[] shopRows = dbc.PhoneTable.Select($"PRODUCT_ID = {Pd_id.Text}");
-                    foreach (DataRow shopRow in shopRows)
-                    {
-                        shopRow.Delete();
-                    }
+                // 해당 제품을 참조하는 레코드를 찾습니다.
+                DataRow[] productRows = dbc.PhoneTable.Select($"PRODUCT_ID = {Pd_id.Text}");
 
-                    // 변경된 내용을 데이터베이스에 반영합니다.
-                    dbc.DBAdapter.Update(dbc.DS, "PRODUCT");
+                // 제품을 찾았을 때 PRODUCT_STATUS 값을 1로 변경합니다.
+                if (productRows.Length > 0)
+                {
+                    productRows[0]["PRODUCT_STATUS"] = 1;
 
-                    // 업데이트된 데이터를 보여주기 위해 재로드하거나 그리드를 새로고침합니다.
-                    dbc.DB_Open_Product();
-                    DBGrid_PD.DataSource = dbc.PhoneTable.DefaultView;
+                    // 변경된 내용을 데이터베이스에 업데이트합니다.
+                    dbc.DBAdapter.Update(dbc.DS, "PRODUCTS");
+
+
                 }
+            }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);

@@ -16,7 +16,7 @@ namespace PickUp2U
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Shopform());
+            Application.Run(new Productform());
         }
     }
 }
