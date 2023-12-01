@@ -68,9 +68,9 @@ namespace PickUp2U
             this.label2.Location = new System.Drawing.Point(41, 110);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 12);
+            this.label2.Size = new System.Drawing.Size(57, 12);
             this.label2.TabIndex = 20;
-            this.label2.Text = "상품보유 매장";
+            this.label2.Text = "운영 매장";
             // 
             // label3
             // 
@@ -92,6 +92,7 @@ namespace PickUp2U
             this.sc_hold.RowTemplate.Height = 37;
             this.sc_hold.Size = new System.Drawing.Size(410, 154);
             this.sc_hold.TabIndex = 21;
+            this.sc_hold.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.sc_hold_CellContentClick);
             // 
             // sc_basket
             // 
@@ -169,9 +170,9 @@ namespace PickUp2U
             this.label1.Location = new System.Drawing.Point(27, 22);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 12);
+            this.label1.Size = new System.Drawing.Size(57, 12);
             this.label1.TabIndex = 0;
-            this.label1.Text = "상품명";
+            this.label1.Text = "매장 번호";
             // 
             // sc_btn
             // 

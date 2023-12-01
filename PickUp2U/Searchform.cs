@@ -20,16 +20,19 @@ namespace PickUp2U
         public Searchform()
         {
             InitializeComponent();
-            dbSc = new SearchDBClass();
 
-            dbSc.DB_Open();
+            string connectionString = "User Id=admin; Password=admin; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = xe)))";
+            string query = "SELECT * FROM SHOPS WHERE SHOP_STATUS = 0";
 
-            DataView dv = dbSc.PhoneTable.DefaultView;
-            dv.RowFilter = "PRODUCT_STATUS = 0";
+            OracleDataAdapter adapter = new OracleDataAdapter(query, connectionString);
+            DataTable dataTable = new DataTable();
 
-            sc_list.DataSource = dv;
+            adapter.Fill(dataTable);
 
-            USERID.Text = USER_ID.ToString();
+            // DataGridView인 sc_hold에 데이터 표시
+            sc_hold.DataSource = dataTable;
+
+
         }
         private void sc_Pdlist_Click(object sender, EventArgs e)
         {
@@ -39,26 +42,28 @@ namespace PickUp2U
         {
             try
             {
-                string itemName = sc_item.Text;
+                string shopId = sc_item.Text; 
 
-                SearchDB2Class searchDB = new SearchDB2Class();
+                string connectionString = "User Id=admin; Password=admin; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = xe)))";
+                string query = $"SELECT PRODUCT_ID FROM SHOPS WHERE SHOP_ID = '{shopId}'";
 
-                searchDB.DB_Open();
+                OracleDataAdapter adapter = new OracleDataAdapter(query, connectionString);
+                DataTable dataTable = new DataTable();
 
-                DataView dv = searchDB.PhoneTable.DefaultView;
-                dv.RowFilter = $"PRODUCT_NAME = '{itemName}'";
+                adapter.Fill(dataTable);
 
-                //sc_hold.DataSource = dv;
-
-                string productId = string.Empty;
-                if (dv.Count > 0)
+                if (dataTable.Rows.Count > 0)
                 {
-                    productId = dv[0]["PRODUCT_ID"].ToString();
+                    string productId = dataTable.Rows[0]["PRODUCT_ID"].ToString();
 
-                    DataView shopView = new DataView(searchDB.ShopTable);
-                    shopView.RowFilter = $"PRODUCT_ID = '{productId}'";
+                    string productQuery = $"SELECT * FROM PRODUCTS WHERE PRODUCT_ID IN (SELECT PRODUCT_ID FROM SHOP_PRODUCTS WHERE SHOP_ID = '{shopId}')";
 
-                    sc_hold.DataSource = shopView;
+                    OracleDataAdapter productAdapter = new OracleDataAdapter(productQuery, connectionString);
+                    DataTable productDataTable = new DataTable();
+
+                    productAdapter.Fill(productDataTable);
+
+                    sc_list.DataSource = productDataTable;
                 }
                 else
                 {
@@ -69,6 +74,7 @@ namespace PickUp2U
             {
                 MessageBox.Show(ex.Message);
             }
+
         }
 
         private void sc_list_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -271,6 +277,11 @@ namespace PickUp2U
                 MessageBox.Show(ex.Message);
             }
 
+
+        }
+
+        private void sc_hold_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }
