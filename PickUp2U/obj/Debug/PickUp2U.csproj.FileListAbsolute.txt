@@ -50,3 +50,4 @@ C:\Users\vlcl7\source\repos\PickUp2U\PickUp2U\obj\Debug\PickUp2U.csproj.CoreComp
 C:\Users\vlcl7\source\repos\PickUp2U\PickUp2U\obj\Debug\PickUp2U.csproj.CopyComplete
 C:\Users\vlcl7\source\repos\PickUp2U\PickUp2U\obj\Debug\PickUp2U.exe
 C:\Users\vlcl7\source\repos\PickUp2U\PickUp2U\obj\Debug\PickUp2U.pdb
+C:\Users\User\Desktop\PU2U1128\PickUp2U\obj\Debug\PickUp2U.ProgressSettingform.resources

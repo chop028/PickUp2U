@@ -32,7 +32,6 @@ namespace PickUp2U
             // DataGridView인 sc_hold에 데이터 표시
             sc_hold.DataSource = dataTable;
 
-
         }
         private void sc_Pdlist_Click(object sender, EventArgs e)
         {
@@ -42,10 +41,13 @@ namespace PickUp2U
         {
             try
             {
-                string shopId = sc_item.Text; 
+                string shopId = sc_item.Text;
+
+                shop_num.Text = sc_item.Text;
 
                 string connectionString = "User Id=admin; Password=admin; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = xe)))";
                 string query = $"SELECT PRODUCT_ID FROM SHOPS WHERE SHOP_ID = '{shopId}'";
+
 
                 OracleDataAdapter adapter = new OracleDataAdapter(query, connectionString);
                 DataTable dataTable = new DataTable();
@@ -89,6 +91,7 @@ namespace PickUp2U
 
                     sc_Productid.Text = productId;
                 }
+
             }
             catch (Exception ex)
             {
@@ -233,8 +236,9 @@ namespace PickUp2U
 
                             DateTime currentTime = DateTime.Now;
                             string formattedDate = currentTime.ToString("yyyy-MM-dd HH:mm:ss");
+                            int shopId = int.Parse(shop_num.Text);
 
-                            string insertQuery = $"INSERT INTO ORDERS (ORDER_ID, USER_ID, SHOP_ID, ORDER_TIME) VALUES ({newOrderId}, '{USER_ID}', 20000, TO_TIMESTAMP('{formattedDate}', 'YYYY-MM-DD HH24:MI:SS'))";
+                            string insertQuery = $"INSERT INTO ORDERS (ORDER_ID, USER_ID, SHOP_ID, ORDER_TIME) VALUES ({newOrderId}, '{USER_ID}', {shopId}, TO_TIMESTAMP('{formattedDate}', 'YYYY-MM-DD HH24:MI:SS'))";
 
                             using (var insertCommand = new OracleCommand(insertQuery, connection))
                             {

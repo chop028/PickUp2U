@@ -46,7 +46,7 @@ namespace PickUp2U
             this.button7 = new System.Windows.Forms.Button();
             this.sc_in = new System.Windows.Forms.Button();
             this.sc_Productid = new System.Windows.Forms.TextBox();
-            this.USERID = new System.Windows.Forms.Label();
+            this.shop_num = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.sc_hold)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sc_list)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -228,21 +228,21 @@ namespace PickUp2U
             this.sc_Productid.Size = new System.Drawing.Size(105, 21);
             this.sc_Productid.TabIndex = 1;
             // 
-            // USERID
+            // shop_num
             // 
-            this.USERID.AutoSize = true;
-            this.USERID.Location = new System.Drawing.Point(592, 45);
-            this.USERID.Name = "USERID";
-            this.USERID.Size = new System.Drawing.Size(38, 12);
-            this.USERID.TabIndex = 37;
-            this.USERID.Text = "label5";
+            this.shop_num.AutoSize = true;
+            this.shop_num.Location = new System.Drawing.Point(50, 493);
+            this.shop_num.Name = "shop_num";
+            this.shop_num.Size = new System.Drawing.Size(38, 12);
+            this.shop_num.TabIndex = 37;
+            this.shop_num.Text = "label5";
             // 
             // Searchform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1013, 647);
-            this.Controls.Add(this.USERID);
+            this.Controls.Add(this.shop_num);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.sc_pay);
             this.Controls.Add(this.sc_Productid);
@@ -287,6 +287,6 @@ namespace PickUp2U
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button sc_in;
         private System.Windows.Forms.TextBox sc_Productid;
-        private System.Windows.Forms.Label USERID;
+        private System.Windows.Forms.Label shop_num;
     }
 }
