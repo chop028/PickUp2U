@@ -39,30 +39,33 @@ namespace PickUp2U
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(337, 82);
+            this.label1.Location = new System.Drawing.Point(626, 164);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(99, 31);
+            this.label1.Size = new System.Drawing.Size(194, 62);
             this.label1.TabIndex = 1;
             this.label1.Text = "로그인";
             // 
             // txtId
             // 
             this.txtId.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtId.Location = new System.Drawing.Point(263, 131);
+            this.txtId.Location = new System.Drawing.Point(488, 262);
+            this.txtId.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtId.Multiline = true;
             this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(256, 37);
+            this.txtId.Size = new System.Drawing.Size(472, 70);
             this.txtId.TabIndex = 2;
             this.txtId.Text = "아이디";
             // 
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.textBox1.Location = new System.Drawing.Point(263, 207);
+            this.textBox1.Location = new System.Drawing.Point(488, 414);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.PasswordChar = '*';
-            this.textBox1.Size = new System.Drawing.Size(256, 37);
+            this.textBox1.Size = new System.Drawing.Size(472, 70);
             this.textBox1.TabIndex = 3;
             this.textBox1.Text = "******";
             this.textBox1.UseSystemPasswordChar = true;
@@ -70,9 +73,10 @@ namespace PickUp2U
             // BtnLogin
             // 
             this.BtnLogin.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.BtnLogin.Location = new System.Drawing.Point(327, 263);
+            this.BtnLogin.Location = new System.Drawing.Point(607, 526);
+            this.BtnLogin.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.BtnLogin.Name = "BtnLogin";
-            this.BtnLogin.Size = new System.Drawing.Size(133, 47);
+            this.BtnLogin.Size = new System.Drawing.Size(247, 94);
             this.BtnLogin.TabIndex = 4;
             this.BtnLogin.Text = "로그인";
             this.BtnLogin.UseVisualStyleBackColor = true;
@@ -80,23 +84,25 @@ namespace PickUp2U
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button1.Location = new System.Drawing.Point(355, 316);
+            this.button1.Location = new System.Drawing.Point(659, 632);
+            this.button1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(81, 24);
+            this.button1.Size = new System.Drawing.Size(150, 48);
             this.button1.TabIndex = 5;
             this.button1.Text = "회원가입";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // Loginform
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1486, 900);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.BtnLogin);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "Loginform";
             this.Text = "Login";
             this.ResumeLayout(false);
