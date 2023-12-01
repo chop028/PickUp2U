@@ -95,6 +95,12 @@
     <Compile Include="Progressform.Designer.cs">
       <DependentUpon>Progressform.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProgressSettingform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProgressSettingform.Designer.cs">
+      <DependentUpon>ProgressSettingform.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registerform.cs">
       <SubType>Form</SubType>
@@ -136,6 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Progressform.resx">
       <DependentUpon>Progressform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgressSettingform.resx">
+      <DependentUpon>ProgressSettingform.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
