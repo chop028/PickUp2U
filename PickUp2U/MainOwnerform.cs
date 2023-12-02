@@ -12,9 +12,13 @@ namespace PickUp2U
 {
     public partial class MainOwnerform : Form
     {
+
+        public static int userId;
         public MainOwnerform()
         {
             InitializeComponent();
+
+            txt_userid.Text = userId.ToString();
         }
 
         private void 매장등록ToolStripMenuItem_Click(object sender, EventArgs e)

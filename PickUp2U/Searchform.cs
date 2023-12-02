@@ -15,8 +15,8 @@ namespace PickUp2U
     {
         SearchDBClass dbSc;
 
-        int USER_ID = 1;
-        
+        public static int userId;
+
         public Searchform()
         {
             InitializeComponent();
@@ -231,7 +231,7 @@ namespace PickUp2U
                             string formattedDate = currentTime.ToString("yyyy-MM-dd HH:mm:ss");
                             int shopId = int.Parse(shop_num.Text);
 
-                            string insertQuery = $"INSERT INTO ORDERS (ORDER_ID, USER_ID, SHOP_ID, ORDER_TIME) VALUES ({newOrderId}, '{USER_ID}', {shopId}, TO_TIMESTAMP('{formattedDate}', 'YYYY-MM-DD HH24:MI:SS'))";
+                            string insertQuery = $"INSERT INTO ORDERS (ORDER_ID, USER_ID, SHOP_ID, ORDER_TIME) VALUES ({newOrderId}, '{userId}', {shopId}, TO_TIMESTAMP('{formattedDate}', 'YYYY-MM-DD HH24:MI:SS'))";
 
                             using (var insertCommand = new OracleCommand(insertQuery, connection))
                             {

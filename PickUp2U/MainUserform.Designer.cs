@@ -33,6 +33,8 @@ namespace PickUp2U
             this.주문하기ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.픽업정보ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.주문내역ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.txt_userid = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,11 +69,31 @@ namespace PickUp2U
             this.주문내역ToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.주문내역ToolStripMenuItem.Text = "주문 내역";
             // 
+            // txt_userid
+            // 
+            this.txt_userid.AutoSize = true;
+            this.txt_userid.Location = new System.Drawing.Point(1011, 9);
+            this.txt_userid.Name = "txt_userid";
+            this.txt_userid.Size = new System.Drawing.Size(17, 12);
+            this.txt_userid.TabIndex = 5;
+            this.txt_userid.Text = "[]";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(951, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 12);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "회원번호";
+            // 
             // MainUserform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1044, 586);
+            this.Controls.Add(this.txt_userid);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
@@ -91,5 +113,7 @@ namespace PickUp2U
         private System.Windows.Forms.ToolStripMenuItem 주문하기ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 픽업정보ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 주문내역ToolStripMenuItem;
+        private System.Windows.Forms.Label txt_userid;
+        private System.Windows.Forms.Label label1;
     }
 }

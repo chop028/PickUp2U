@@ -31,7 +31,7 @@ namespace PickUp2U
         {
             this.label1 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtPW = new System.Windows.Forms.TextBox();
             this.BtnLogin = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -55,17 +55,17 @@ namespace PickUp2U
             this.txtId.TabIndex = 2;
             this.txtId.Text = "아이디";
             // 
-            // textBox1
+            // txtPW
             // 
-            this.textBox1.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.textBox1.Location = new System.Drawing.Point(263, 207);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PasswordChar = '*';
-            this.textBox1.Size = new System.Drawing.Size(256, 37);
-            this.textBox1.TabIndex = 3;
-            this.textBox1.Text = "******";
-            this.textBox1.UseSystemPasswordChar = true;
+            this.txtPW.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtPW.Location = new System.Drawing.Point(263, 207);
+            this.txtPW.Multiline = true;
+            this.txtPW.Name = "txtPW";
+            this.txtPW.PasswordChar = '*';
+            this.txtPW.Size = new System.Drawing.Size(256, 37);
+            this.txtPW.TabIndex = 3;
+            this.txtPW.Text = "******";
+            this.txtPW.UseSystemPasswordChar = true;
             // 
             // BtnLogin
             // 
@@ -76,6 +76,7 @@ namespace PickUp2U
             this.BtnLogin.TabIndex = 4;
             this.BtnLogin.Text = "로그인";
             this.BtnLogin.UseVisualStyleBackColor = true;
+            this.BtnLogin.Click += new System.EventHandler(this.BtnLogin_Click);
             // 
             // button1
             // 
@@ -95,7 +96,7 @@ namespace PickUp2U
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.BtnLogin);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtPW);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.label1);
             this.Name = "Loginform";
@@ -109,7 +110,7 @@ namespace PickUp2U
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtId;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtPW;
         private System.Windows.Forms.Button BtnLogin;
         private System.Windows.Forms.Button button1;
     }

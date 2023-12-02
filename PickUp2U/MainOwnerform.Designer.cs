@@ -37,6 +37,8 @@ namespace PickUp2U
             this.상품조회ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.픽업관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txt_userid = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,14 +66,14 @@ namespace PickUp2U
             // 매장등록ToolStripMenuItem
             // 
             this.매장등록ToolStripMenuItem.Name = "매장등록ToolStripMenuItem";
-            this.매장등록ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.매장등록ToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.매장등록ToolStripMenuItem.Text = "매장 등록";
             this.매장등록ToolStripMenuItem.Click += new System.EventHandler(this.매장등록ToolStripMenuItem_Click);
             // 
             // 상품등록ToolStripMenuItem
             // 
             this.상품등록ToolStripMenuItem.Name = "상품등록ToolStripMenuItem";
-            this.상품등록ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.상품등록ToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.상품등록ToolStripMenuItem.Text = "상품 등록";
             this.상품등록ToolStripMenuItem.Click += new System.EventHandler(this.상품등록ToolStripMenuItem_Click);
             // 
@@ -103,11 +105,31 @@ namespace PickUp2U
             this.픽업관리ToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.픽업관리ToolStripMenuItem.Text = "픽업 관리";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(937, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 12);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "회원번호";
+            // 
+            // txt_userid
+            // 
+            this.txt_userid.AutoSize = true;
+            this.txt_userid.Location = new System.Drawing.Point(997, 8);
+            this.txt_userid.Name = "txt_userid";
+            this.txt_userid.Size = new System.Drawing.Size(17, 12);
+            this.txt_userid.TabIndex = 3;
+            this.txt_userid.Text = "[]";
+            // 
             // MainOwnerform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1044, 586);
+            this.Controls.Add(this.txt_userid);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
@@ -131,5 +153,7 @@ namespace PickUp2U
         private System.Windows.Forms.ToolStripMenuItem 상품조회ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 관리ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 픽업관리ToolStripMenuItem;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label txt_userid;
     }
 }
