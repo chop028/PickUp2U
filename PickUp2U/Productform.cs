@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oracle.DataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -55,7 +56,6 @@ namespace PickUp2U
                 string productPrice = Pd_price.Text;
                 string productStock = Pd_stock.Text;
 
-
                 DataRow newProductRow = dbc.PhoneTable.NewRow();
                 newProductRow["PRODUCT_ID"] = newProductId.ToString();
                 newProductRow["PRODUCT_NAME"] = productName;
@@ -65,16 +65,36 @@ namespace PickUp2U
 
                 dbc.PhoneTable.Rows.Add(newProductRow);
 
+                // Update the products table
                 dbc.DBAdapter.Update(dbc.DS, "products");
 
-                //dbc.DB_Open_Product();
-                //DBGrid_PD.DataSource = dbc.PhoneTable.DefaultView;
+                // Insert into SHOP_PRODUCTS table
+                string pd_shop_id = pd_shop.Text; // Assuming pd_shop is the TextBox containing SHOP_ID
+                int shopId = int.Parse(pd_shop_id);
+
+                // Assuming the SHOP_PRODUCTS table has SHOP_ID and PRODUCT_ID columns
+                string shopProductsQuery = $"INSERT INTO SHOP_PRODUCTS (SHOP_ID, PRODUCT_ID) VALUES ({shopId}, {newProductId})";
+
+
+                string connectionString = "User Id=admin; Password=admin; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = xe)) )";
+
+                using (OracleConnection connection = new OracleConnection(connectionString))
+                {
+                    connection.Open();
+                    OracleCommand command = new OracleCommand(shopProductsQuery, connection);
+                    command.ExecuteNonQuery();
+                }
+
+                // Reload data or update the grid if needed
+                // dbc.DB_Open_Product();
+                // DBGrid_PD.DataSource = dbc.PhoneTable.DefaultView;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
+
 
         private void DBGrid_PD_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
