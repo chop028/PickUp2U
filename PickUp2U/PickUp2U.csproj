@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DBClass.cs" />
+    <Compile Include="DBClassOD.cs" />
     <Compile Include="DBClass_user.cs" />
     <Compile Include="Loginform.cs">
       <SubType>Form</SubType>

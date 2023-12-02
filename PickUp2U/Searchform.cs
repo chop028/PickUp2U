@@ -213,13 +213,6 @@ namespace PickUp2U
 
                     using (var maxProductOrderIdCommand = new OracleCommand(getMaxProductOrderIdQuery, connection))
                     {
-                        object productOrderIdResult = maxProductOrderIdCommand.ExecuteScalar();
-                        int productOrderId = 40000;
-
-                        if (productOrderIdResult != DBNull.Value)
-                        {
-                            productOrderId = Convert.ToInt32(productOrderIdResult) + 1;
-                        }
 
                         string getMaxIdQuery = "SELECT MAX(ORDER_ID) FROM ORDERS";
 
@@ -243,34 +236,114 @@ namespace PickUp2U
                             using (var insertCommand = new OracleCommand(insertQuery, connection))
                             {
                                 int rowsAffected = insertCommand.ExecuteNonQuery();
+                                MessageBox.Show("제품 주문이 완료되었습니다.");
 
-                                if (rowsAffected > 0)
+                                object productOrderIdResult = maxProductOrderIdCommand.ExecuteScalar();
+                                int productOrderId = 40000;
+
+                                if (productOrderIdResult != DBNull.Value)
                                 {
-                                    int productId = 10000;
-                                    int orderQuantity = 3;
-                                    int orderAmount = 1800;
-                                    int total = 5400;
-
-                                    string productInsertQuery = $"INSERT INTO PRODUCT_ORDERS (PRODUCT_ORDER_ID, ORDER_ID, PRODUCT_ID, ORDER_QUANTITY, ORDER_AMOUNT, TOTAL) VALUES ({productOrderId}, {newOrderId}, {productId}, {orderQuantity}, {orderAmount}, {total})";
-
-                                    using (var productInsertCommand = new OracleCommand(productInsertQuery, connection))
-                                    {
-                                        int productRowsAffected = productInsertCommand.ExecuteNonQuery();
-
-                                        if (productRowsAffected > 0)
-                                        {
-                                            MessageBox.Show("제품 주문이 완료되었습니다.");
-                                        }
-                                        else
-                                        {
-                                            MessageBox.Show("제품 주문에 실패했습니다.");
-                                        }
-                                    }
+                                    productOrderId = Convert.ToInt32(productOrderIdResult) + 1;
                                 }
-                                else
-                                {
-                                    MessageBox.Show("주문에 실패했습니다.");
-                                }
+
+                                inesrtPRODUCT_ORDERS(newOrderId,productOrderId);
+                                /*             ORDERS 테이블 insert                     */
+                           
+
+                            }
+
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+   
+
+        private void inesrtPRODUCT_ORDERS(int orderID, int productOrderID)
+        {
+            //MessageBox.Show("neworder id = " + orderID.ToString());
+            //MessageBox.Show("productOrder id = " + productOrderID.ToString());
+            //MessageBox.Show("basket_num_arr = " + basket_num_arr.Count); 
+            /*
+            for(int i=0; i<basket_arr.Count; i++)
+            {
+                MessageBox.Show("productOrder id = " + productOrderID.ToString());
+                productOrderID++;
+
+            }
+            */
+            string connectionString = "User Id=admin; Password=admin; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = xe)) )";
+
+            using (var connection = new OracleConnection(connectionString))
+            {
+                connection.Open();
+
+
+                for (int i = 0; i < basket_arr.Count; i++)
+                {
+                    int productid = int.Parse(basket_arr[i]);
+                    int orderQuantity = int.Parse(basket_num_arr[i]);
+                    int orderAmount = int.Parse(basket_price_arr[i]);
+                    int total = orderQuantity * orderAmount;
+
+
+                    //MessageBox.Show("productOrder id = " + productOrderID.ToString());
+                    string productInsertQuery = $"INSERT INTO PRODUCT_ORDERS (PRODUCT_ORDER_ID, ORDER_ID, PRODUCT_ID, ORDER_QUANTITY, ORDER_AMOUNT, TOTAL) VALUES ({productOrderID}, {orderID}, {productid}, {orderQuantity}, {orderAmount}, {total})";
+
+                    productOrderID++;
+                    using (var productInsertCommand = new OracleCommand(productInsertQuery, connection))
+                    {
+                        int productRowsAffected = productInsertCommand.ExecuteNonQuery();
+
+                        /*
+                        if (productRowsAffected > 0)
+                        {
+                            MessageBox.Show($"주문 {productOrderID}가 완료되었습니다.");
+                        }
+                        else
+                        {
+                            MessageBox.Show($"주문 {productOrderID}에 실패했습니다.");
+                        }
+                        */
+                    }
+                }
+            }
+        }
+
+        private void sc_hold_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button1sa_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string connectionString = "User Id=admin; Password=admin; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = xe)) )";
+
+                using (var connection = new OracleConnection(connectionString))
+                {
+                    connection.Open();
+
+                    for (int i = 40025; i < 40027; i++)
+                    {
+                        string productInsertQuery = $"INSERT INTO PRODUCT_ORDERS (PRODUCT_ORDER_ID, ORDER_ID, PRODUCT_ID, ORDER_QUANTITY, ORDER_AMOUNT, TOTAL) VALUES ({i}, 30031, 10000, 3, 1800, 3600)";
+
+                        using (var productInsertCommand = new OracleCommand(productInsertQuery, connection))
+                        {
+                            int productRowsAffected = productInsertCommand.ExecuteNonQuery();
+
+                            if (productRowsAffected > 0)
+                            {
+                                MessageBox.Show($"주문 {i}가 완료되었습니다.");
+                            }
+                            else
+                            {
+                                MessageBox.Show($"주문 {i}에 실패했습니다.");
                             }
                         }
                     }
@@ -280,13 +353,8 @@ namespace PickUp2U
             {
                 MessageBox.Show(ex.Message);
             }
-
-
         }
 
-        private void sc_hold_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
-        }
     }
 }

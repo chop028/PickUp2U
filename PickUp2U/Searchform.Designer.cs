@@ -61,6 +61,7 @@ namespace PickUp2U
             this.button1sa.TabIndex = 30;
             this.button1sa.Text = "상품삭제";
             this.button1sa.UseVisualStyleBackColor = true;
+            this.button1sa.Click += new System.EventHandler(this.button1sa_Click);
             // 
             // label2
             // 
