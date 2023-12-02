@@ -16,5 +16,12 @@ namespace PickUp2U
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            Registerform Registerform = new Registerform(); // 이동하고자 하는 폼으로 변경
+            Registerform.ShowDialog();
+        }
     }
 }
