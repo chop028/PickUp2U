@@ -72,7 +72,7 @@ namespace PickUp2U
             // txt_userid
             // 
             this.txt_userid.AutoSize = true;
-            this.txt_userid.Location = new System.Drawing.Point(1011, 9);
+            this.txt_userid.Location = new System.Drawing.Point(782, 9);
             this.txt_userid.Name = "txt_userid";
             this.txt_userid.Size = new System.Drawing.Size(17, 12);
             this.txt_userid.TabIndex = 5;
@@ -81,7 +81,7 @@ namespace PickUp2U
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(951, 9);
+            this.label1.Location = new System.Drawing.Point(722, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 12);
             this.label1.TabIndex = 4;
