@@ -29,10 +29,6 @@ namespace PickUp2U
             InitializeUI(); // 사용자 인터페이스 초기화
 
         }
-<<<<<<< HEAD
-
-=======
->>>>>>> fa079993f9f169452dd890ef889c8ccfbc7b9512
         private void InitializeUI()
         {
             // 1. 남은 시간을 표시하는 Label 추가
@@ -47,14 +43,7 @@ namespace PickUp2U
             lblInProgressTime.Text = ProductInProgressTime != DateTime.MinValue ? "상품준비: " + ProductInProgressTime.ToString() : "상품준비: ";
             lblWaitingTime.Text = PickupWaitingTime != DateTime.MinValue ? "픽업대기: " + PickupWaitingTime.ToString() : "픽업대기: ";
             lblCompleteTime.Text = PickupCompleteTime != DateTime.MinValue ? "픽업완료: " + PickupCompleteTime.ToString() : "픽업완료: ";
-<<<<<<< HEAD
-        }
-
-
-
-=======
         } 
->>>>>>> fa079993f9f169452dd890ef889c8ccfbc7b9512
 
         private void SetProgressBar()
         {
@@ -76,11 +65,7 @@ namespace PickUp2U
             }
         }
 
-<<<<<<< HEAD
-
-=======
        
->>>>>>> fa079993f9f169452dd890ef889c8ccfbc7b9512
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -95,11 +80,7 @@ namespace PickUp2U
 
                         // 남은 시간을 분 단위로 계산하여 출력 (소수점 자리 제거)
                         int remainingMinutes = (int)Math.Round(remainingTime.TotalMinutes);
-<<<<<<< HEAD
-                        lblRemainingTime.Text = $"남은시간: 약 {remainingMinutes} 분";
-=======
                         //lblRemainingTime.Text = "남은시간: 약 " + "$"{remainingMinutes} 분";
->>>>>>> fa079993f9f169452dd890ef889c8ccfbc7b9512
 
                     }
                     else

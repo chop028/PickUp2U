@@ -7,52 +7,6 @@ C:\Users\jewhi\Desktop\Pickup2uu\PickUp2U\PickUp2U\obj\Debug\PickUp2U.csproj.Gen
 C:\Users\jewhi\Desktop\Pickup2uu\PickUp2U\PickUp2U\obj\Debug\PickUp2U.csproj.CoreCompileInputs.cache
 C:\Users\jewhi\Desktop\Pickup2uu\PickUp2U\PickUp2U\obj\Debug\PickUp2U.exe
 C:\Users\jewhi\Desktop\Pickup2uu\PickUp2U\PickUp2U\obj\Debug\PickUp2U.pdb
-<<<<<<< HEAD
-C:\Users\User\Desktop\PU2U1128\PickUp2U\bin\Debug\PickUp2U.exe.config
-C:\Users\User\Desktop\PU2U1128\PickUp2U\bin\Debug\PickUp2U.exe
-C:\Users\User\Desktop\PU2U1128\PickUp2U\bin\Debug\PickUp2U.pdb
-C:\Users\User\Desktop\PU2U1128\PickUp2U\bin\Debug\Oracle.DataAccess.dll
-C:\Users\User\Desktop\PU2U1128\PickUp2U\obj\Debug\PickUp2U.csproj.AssemblyReference.cache
-C:\Users\User\Desktop\PU2U1128\PickUp2U\obj\Debug\PickUp2U.Loginform.resources
-C:\Users\User\Desktop\PU2U1128\PickUp2U\obj\Debug\PickUp2U.MainOwnerform.resources
-C:\Users\User\Desktop\PU2U1128\PickUp2U\obj\Debug\PickUp2U.MainUserform.resources
-C:\Users\User\Desktop\PU2U1128\PickUp2U\obj\Debug\PickUp2U.OrderDetailform.resources
-C:\Users\User\Desktop\PU2U1128\PickUp2U\obj\Debug\PickUp2U.Paymentform.resources
-C:\Users\User\Desktop\PU2U1128\PickUp2U\obj\Debug\PickUp2U.Progressform.resources
-C:\Users\User\Desktop\PU2U1128\PickUp2U\obj\Debug\PickUp2U.Properties.Resources.resources
-C:\Users\User\Desktop\PU2U1128\PickUp2U\obj\Debug\PickUp2U.Registerform.resources
-C:\Users\User\Desktop\PU2U1128\PickUp2U\obj\Debug\PickUp2U.Searchform.resources
-C:\Users\User\Desktop\PU2U1128\PickUp2U\obj\Debug\PickUp2U.Shopform.resources
-C:\Users\User\Desktop\PU2U1128\PickUp2U\obj\Debug\PickUp2U.csproj.GenerateResource.cache
-C:\Users\User\Desktop\PU2U1128\PickUp2U\obj\Debug\PickUp2U.csproj.CoreCompileInputs.cache
-C:\Users\User\Desktop\PU2U1128\PickUp2U\obj\Debug\PickUp2U.csproj.CopyComplete
-C:\Users\User\Desktop\PU2U1128\PickUp2U\obj\Debug\PickUp2U.exe
-C:\Users\User\Desktop\PU2U1128\PickUp2U\obj\Debug\PickUp2U.pdb
-C:\Users\User\Desktop\PU2U1128\PickUp2U\obj\Debug\PickUp2U.Productform.resources
-C:\Users\vlcl7\source\repos\PickUp2U\PickUp2U\bin\Debug\PickUp2U.exe.config
-C:\Users\vlcl7\source\repos\PickUp2U\PickUp2U\bin\Debug\PickUp2U.exe
-C:\Users\vlcl7\source\repos\PickUp2U\PickUp2U\bin\Debug\PickUp2U.pdb
-C:\Users\vlcl7\source\repos\PickUp2U\PickUp2U\bin\Debug\Oracle.DataAccess.dll
-C:\Users\vlcl7\source\repos\PickUp2U\PickUp2U\obj\Debug\PickUp2U.csproj.AssemblyReference.cache
-C:\Users\vlcl7\source\repos\PickUp2U\PickUp2U\obj\Debug\PickUp2U.Loginform.resources
-C:\Users\vlcl7\source\repos\PickUp2U\PickUp2U\obj\Debug\PickUp2U.MainOwnerform.resources
-C:\Users\vlcl7\source\repos\PickUp2U\PickUp2U\obj\Debug\PickUp2U.MainUserform.resources
-C:\Users\vlcl7\source\repos\PickUp2U\PickUp2U\obj\Debug\PickUp2U.OrderDetailform.resources
-C:\Users\vlcl7\source\repos\PickUp2U\PickUp2U\obj\Debug\PickUp2U.Paymentform.resources
-C:\Users\vlcl7\source\repos\PickUp2U\PickUp2U\obj\Debug\PickUp2U.Productform.resources
-C:\Users\vlcl7\source\repos\PickUp2U\PickUp2U\obj\Debug\PickUp2U.Progressform.resources
-C:\Users\vlcl7\source\repos\PickUp2U\PickUp2U\obj\Debug\PickUp2U.ProgressSettingform.resources
-C:\Users\vlcl7\source\repos\PickUp2U\PickUp2U\obj\Debug\PickUp2U.Properties.Resources.resources
-C:\Users\vlcl7\source\repos\PickUp2U\PickUp2U\obj\Debug\PickUp2U.Registerform.resources
-C:\Users\vlcl7\source\repos\PickUp2U\PickUp2U\obj\Debug\PickUp2U.Searchform.resources
-C:\Users\vlcl7\source\repos\PickUp2U\PickUp2U\obj\Debug\PickUp2U.Shopform.resources
-C:\Users\vlcl7\source\repos\PickUp2U\PickUp2U\obj\Debug\PickUp2U.csproj.GenerateResource.cache
-C:\Users\vlcl7\source\repos\PickUp2U\PickUp2U\obj\Debug\PickUp2U.csproj.CoreCompileInputs.cache
-C:\Users\vlcl7\source\repos\PickUp2U\PickUp2U\obj\Debug\PickUp2U.csproj.CopyComplete
-C:\Users\vlcl7\source\repos\PickUp2U\PickUp2U\obj\Debug\PickUp2U.exe
-C:\Users\vlcl7\source\repos\PickUp2U\PickUp2U\obj\Debug\PickUp2U.pdb
-C:\Users\User\Desktop\PU2U1128\PickUp2U\obj\Debug\PickUp2U.ProgressSettingform.resources
-=======
 C:\Users\vlcl7\Source\Repos\PickUp2U\PickUp2U\bin\Debug\PickUp2U.exe.config
 C:\Users\vlcl7\Source\Repos\PickUp2U\PickUp2U\bin\Debug\PickUp2U.exe
 C:\Users\vlcl7\Source\Repos\PickUp2U\PickUp2U\bin\Debug\PickUp2U.pdb
@@ -96,4 +50,3 @@ C:\Users\jewhi\Desktop\com_sof 2-2\C#\Project\Pickup\PickUp2U\PickUp2U\bin\Debug
 C:\Users\jewhi\Desktop\com_sof 2-2\C#\Project\Pickup\PickUp2U\PickUp2U\bin\Debug\Oracle.DataAccess.dll
 C:\Users\jewhi\Desktop\com_sof 2-2\C#\Project\Pickup\PickUp2U\PickUp2U\obj\Debug\PickUp2U.csproj.CopyComplete
 C:\Users\jewhi\Desktop\com_sof 2-2\C#\Project\Pickup\PickUp2U\PickUp2U\obj\Debug\PickUp2U.OrerSearchform.resources
->>>>>>> fa079993f9f169452dd890ef889c8ccfbc7b9512

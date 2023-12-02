@@ -139,15 +139,6 @@ namespace PickUp2U
             // 
             // label5
             // 
-<<<<<<< HEAD
-            this.showList.Location = new System.Drawing.Point(186, 424);
-            this.showList.Name = "showList";
-            this.showList.Size = new System.Drawing.Size(74, 21);
-            this.showList.TabIndex = 13;
-            this.showList.Text = "정보 보기";
-            this.showList.UseVisualStyleBackColor = true;
-            this.showList.Click += new System.EventHandler(this.showList_Click);
-=======
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(19, 404);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -155,7 +146,6 @@ namespace PickUp2U
             this.label5.Size = new System.Drawing.Size(114, 24);
             this.label5.TabIndex = 7;
             this.label5.Text = "주문 수량";
->>>>>>> fa079993f9f169452dd890ef889c8ccfbc7b9512
             // 
             // textBox4
             // 

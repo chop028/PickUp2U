@@ -111,8 +111,4 @@ namespace PickUp2U
 
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> fa079993f9f169452dd890ef889c8ccfbc7b9512
