@@ -13,10 +13,12 @@ namespace PickUp2U
 {
     public partial class OrderDetailform : Form
     {
+        public int userId;
         string connectionString = "User Id=admin; Password=admin; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = xe)) ); ";
-        public OrderDetailform()
+        public OrderDetailform(int userId)
         {
             InitializeComponent();
+            this.userId = userId;
         }
         private void showlistBtn_Click(object sender, EventArgs e)
         {
@@ -34,7 +36,8 @@ namespace PickUp2U
                     SELECT O.ORDER_TIME, PO.ORDER_ID, P.PRODUCT_NAME, PO.ORDER_QUANTITY, PO.TOTAL
                     FROM ORDERS O
                     INNER JOIN PRODUCT_ORDERS PO ON O.ORDER_ID = PO.ORDER_ID
-                    INNER JOIN PRODUCTS P ON PO.PRODUCT_ID = P.PRODUCT_ID";
+                    INNER JOIN PRODUCTS P ON PO.PRODUCT_ID = P.PRODUCT_ID
+                    WHERE O.USER_ID = " + userId;
 
                     using (OracleDataAdapter adapter = new OracleDataAdapter(query, connection))
                     {

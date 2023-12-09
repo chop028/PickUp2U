@@ -14,10 +14,10 @@ namespace PickUp2U
     {
 
         public static int userId;
-        public MainOwnerform()
+        public MainOwnerform(int userId)
         {
             InitializeComponent();
-
+            MainOwnerform.userId = userId;
             txt_userid.Text = userId.ToString();
         }
 
@@ -38,6 +38,13 @@ namespace PickUp2U
             product = new Productform();
             product.MdiParent = this;
             product .Show();  
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Loginform loginForm = new Loginform();
+            loginForm.Show();
         }
     }
 }

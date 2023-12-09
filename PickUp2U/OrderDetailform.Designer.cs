@@ -89,7 +89,7 @@ namespace PickUp2U
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(162, 118);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(318, 35);
@@ -99,7 +99,7 @@ namespace PickUp2U
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(162, 220);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(318, 35);
@@ -109,7 +109,7 @@ namespace PickUp2U
             // textBox3
             // 
             this.textBox3.Location = new System.Drawing.Point(162, 312);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(4);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(318, 35);
@@ -129,7 +129,7 @@ namespace PickUp2U
             // showlistBtn
             // 
             this.showlistBtn.Location = new System.Drawing.Point(475, 988);
-            this.showlistBtn.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.showlistBtn.Margin = new System.Windows.Forms.Padding(6);
             this.showlistBtn.Name = "showlistBtn";
             this.showlistBtn.Size = new System.Drawing.Size(137, 42);
             this.showlistBtn.TabIndex = 13;
@@ -150,7 +150,7 @@ namespace PickUp2U
             // textBox4
             // 
             this.textBox4.Location = new System.Drawing.Point(162, 400);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(4);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(318, 35);
@@ -170,7 +170,7 @@ namespace PickUp2U
             // textBox5
             // 
             this.textBox5.Location = new System.Drawing.Point(162, 468);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(4);
             this.textBox5.Name = "textBox5";
             this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(318, 35);
@@ -181,7 +181,7 @@ namespace PickUp2U
             // 
             this.dataGridViewOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewOrders.Location = new System.Drawing.Point(24, 598);
-            this.dataGridViewOrders.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridViewOrders.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewOrders.Name = "dataGridViewOrders";
             this.dataGridViewOrders.RowHeadersWidth = 82;
             this.dataGridViewOrders.RowTemplate.Height = 37;
@@ -193,7 +193,7 @@ namespace PickUp2U
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1146, 1048);
+            this.ClientSize = new System.Drawing.Size(1174, 1029);
             this.Controls.Add(this.dataGridViewOrders);
             this.Controls.Add(this.showlistBtn);
             this.Controls.Add(this.label6);
@@ -208,7 +208,7 @@ namespace PickUp2U
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "OrderDetailform";
             this.Text = "OrderDetail";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).EndInit();
