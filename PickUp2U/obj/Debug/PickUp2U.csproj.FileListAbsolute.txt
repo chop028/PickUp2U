@@ -94,3 +94,4 @@ C:\Users\jewhi\Desktop\com_sof_2-2\C#\Project\PickUp2U\PickUp2U\obj\Debug\PickUp
 C:\Users\jewhi\Desktop\com_sof_2-2\C#\Project\PickUp2U\PickUp2U\obj\Debug\PickUp2U.csproj.CopyComplete
 C:\Users\jewhi\Desktop\com_sof_2-2\C#\Project\PickUp2U\PickUp2U\obj\Debug\PickUp2U.exe
 C:\Users\jewhi\Desktop\com_sof_2-2\C#\Project\PickUp2U\PickUp2U\obj\Debug\PickUp2U.pdb
+C:\Users\jewhi\Desktop\com_sof_2-2\C#\Project\PickUp2U\PickUp2U\obj\Debug\PickUp2U.OrderListform.resources

@@ -43,6 +43,7 @@ namespace PickUp2U
             this.label7 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.dataGridViewOrders = new System.Windows.Forms.DataGridView();
+            this.deleteBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).BeginInit();
             this.SuspendLayout();
             // 
@@ -189,11 +190,22 @@ namespace PickUp2U
             this.dataGridViewOrders.TabIndex = 14;
             this.dataGridViewOrders.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewOrders_CellClick);
             // 
+            // deleteBtn
+            // 
+            this.deleteBtn.Location = new System.Drawing.Point(801, 115);
+            this.deleteBtn.Name = "deleteBtn";
+            this.deleteBtn.Size = new System.Drawing.Size(178, 38);
+            this.deleteBtn.TabIndex = 15;
+            this.deleteBtn.Text = "주문 내역 삭제";
+            this.deleteBtn.UseVisualStyleBackColor = true;
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
+            // 
             // OrderDetailform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1174, 1029);
+            this.Controls.Add(this.deleteBtn);
             this.Controls.Add(this.dataGridViewOrders);
             this.Controls.Add(this.showlistBtn);
             this.Controls.Add(this.label6);
@@ -233,5 +245,6 @@ namespace PickUp2U
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.DataGridView dataGridViewOrders;
+        private System.Windows.Forms.Button deleteBtn;
     }
 }

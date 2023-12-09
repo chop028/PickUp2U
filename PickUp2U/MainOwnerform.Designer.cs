@@ -35,6 +35,7 @@ namespace PickUp2U
             this.상품등록ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.조회ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.상품조회ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.주문조회ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.픽업관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
@@ -45,7 +46,6 @@ namespace PickUp2U
             // 
             // menuStrip1
             // 
-            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.등록ToolStripMenuItem,
@@ -84,7 +84,8 @@ namespace PickUp2U
             // 조회ToolStripMenuItem
             // 
             this.조회ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.상품조회ToolStripMenuItem});
+            this.상품조회ToolStripMenuItem,
+            this.주문조회ToolStripMenuItem});
             this.조회ToolStripMenuItem.Name = "조회ToolStripMenuItem";
             this.조회ToolStripMenuItem.Size = new System.Drawing.Size(83, 36);
             this.조회ToolStripMenuItem.Text = "조회";
@@ -94,6 +95,12 @@ namespace PickUp2U
             this.상품조회ToolStripMenuItem.Name = "상품조회ToolStripMenuItem";
             this.상품조회ToolStripMenuItem.Size = new System.Drawing.Size(253, 44);
             this.상품조회ToolStripMenuItem.Text = "상품 조회";
+            // 
+            // 주문조회ToolStripMenuItem
+            // 
+            this.주문조회ToolStripMenuItem.Name = "주문조회ToolStripMenuItem";
+            this.주문조회ToolStripMenuItem.Size = new System.Drawing.Size(253, 44);
+            this.주문조회ToolStripMenuItem.Text = "주문 조회";
             // 
             // 관리ToolStripMenuItem
             // 
@@ -112,7 +119,7 @@ namespace PickUp2U
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1512, 18);
+            this.label1.Location = new System.Drawing.Point(1240, 10);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(106, 24);
@@ -122,7 +129,7 @@ namespace PickUp2U
             // txt_userid
             // 
             this.txt_userid.AutoSize = true;
-            this.txt_userid.Location = new System.Drawing.Point(1623, 18);
+            this.txt_userid.Location = new System.Drawing.Point(1358, 10);
             this.txt_userid.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.txt_userid.Name = "txt_userid";
             this.txt_userid.Size = new System.Drawing.Size(34, 24);
@@ -131,7 +138,7 @@ namespace PickUp2U
             // 
             // btnLogout
             // 
-            this.btnLogout.Location = new System.Drawing.Point(1358, 0);
+            this.btnLogout.Location = new System.Drawing.Point(1102, 0);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(129, 44);
             this.btnLogout.TabIndex = 5;
@@ -150,7 +157,7 @@ namespace PickUp2U
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "MainOwnerform";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Owner";
@@ -174,5 +181,6 @@ namespace PickUp2U
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label txt_userid;
         private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.ToolStripMenuItem 주문조회ToolStripMenuItem;
     }
 }
