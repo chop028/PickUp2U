@@ -41,43 +41,48 @@ namespace PickUp2U
             // lblRemainingTime
             // 
             this.lblRemainingTime.AutoSize = true;
-            this.lblRemainingTime.Location = new System.Drawing.Point(194, 42);
+            this.lblRemainingTime.Location = new System.Drawing.Point(104, 21);
+            this.lblRemainingTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRemainingTime.Name = "lblRemainingTime";
-            this.lblRemainingTime.Size = new System.Drawing.Size(69, 24);
+            this.lblRemainingTime.Size = new System.Drawing.Size(57, 12);
             this.lblRemainingTime.TabIndex = 0;
-            this.lblRemainingTime.Text = "label1";
+            this.lblRemainingTime.Text = "예상시간:";
             // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(67, 122);
+            this.progressBar.Location = new System.Drawing.Point(36, 61);
+            this.progressBar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(620, 77);
+            this.progressBar.Size = new System.Drawing.Size(334, 38);
             this.progressBar.TabIndex = 1;
             // 
             // lblInProgressTime
             // 
             this.lblInProgressTime.AutoSize = true;
-            this.lblInProgressTime.Location = new System.Drawing.Point(159, 254);
+            this.lblInProgressTime.Location = new System.Drawing.Point(86, 127);
+            this.lblInProgressTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblInProgressTime.Name = "lblInProgressTime";
-            this.lblInProgressTime.Size = new System.Drawing.Size(69, 24);
+            this.lblInProgressTime.Size = new System.Drawing.Size(38, 12);
             this.lblInProgressTime.TabIndex = 0;
             this.lblInProgressTime.Text = "label1";
             // 
             // lblWaitingTime
             // 
             this.lblWaitingTime.AutoSize = true;
-            this.lblWaitingTime.Location = new System.Drawing.Point(159, 302);
+            this.lblWaitingTime.Location = new System.Drawing.Point(86, 151);
+            this.lblWaitingTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblWaitingTime.Name = "lblWaitingTime";
-            this.lblWaitingTime.Size = new System.Drawing.Size(69, 24);
+            this.lblWaitingTime.Size = new System.Drawing.Size(38, 12);
             this.lblWaitingTime.TabIndex = 0;
             this.lblWaitingTime.Text = "label1";
             // 
             // lblCompleteTime
             // 
             this.lblCompleteTime.AutoSize = true;
-            this.lblCompleteTime.Location = new System.Drawing.Point(159, 348);
+            this.lblCompleteTime.Location = new System.Drawing.Point(86, 174);
+            this.lblCompleteTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCompleteTime.Name = "lblCompleteTime";
-            this.lblCompleteTime.Size = new System.Drawing.Size(69, 24);
+            this.lblCompleteTime.Size = new System.Drawing.Size(38, 12);
             this.lblCompleteTime.TabIndex = 0;
             this.lblCompleteTime.Text = "label1";
             // 
@@ -88,14 +93,15 @@ namespace PickUp2U
             // 
             // Progressform
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1030, 573);
+            this.ClientSize = new System.Drawing.Size(555, 286);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.lblCompleteTime);
             this.Controls.Add(this.lblWaitingTime);
             this.Controls.Add(this.lblInProgressTime);
             this.Controls.Add(this.lblRemainingTime);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Progressform";
             this.Text = "Progressform";
             this.ResumeLayout(false);

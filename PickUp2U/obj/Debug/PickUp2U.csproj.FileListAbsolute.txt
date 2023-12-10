@@ -72,3 +72,6 @@ C:\Users\User\Desktop\PU2U1128\PickUp2U\obj\Debug\PickUp2U.csproj.CoreCompileInp
 C:\Users\User\Desktop\PU2U1128\PickUp2U\obj\Debug\PickUp2U.csproj.CopyComplete
 C:\Users\User\Desktop\PU2U1128\PickUp2U\obj\Debug\PickUp2U.exe
 C:\Users\User\Desktop\PU2U1128\PickUp2U\obj\Debug\PickUp2U.pdb
+C:\Users\vlcl7\Source\Repos\PickUp2U\PickUp2U\obj\Debug\PickUp2U.Productform.resources
+C:\Users\vlcl7\Source\Repos\PickUp2U\PickUp2U\obj\Debug\PickUp2U.ShopOrderHistoryform.resources
+C:\Users\vlcl7\Source\Repos\PickUp2U\PickUp2U\obj\Debug\PickUp2U.UserOrderHistoryform.resources
