@@ -185,7 +185,9 @@ namespace PickUp2U
                             totalPriceC += pPrice * pquantity;
                         }
 
-                        sc_total.Text = "총 금액 :" + totalPriceC.ToString();
+                        sc_total.Text = "총 상품 가격 :" + totalPriceC.ToString();
+                        discount.Text = "- 할인 금액 :" + (totalPriceC * GetMembershipId()).ToString();
+                        total_amount.Text = "총 결제 금액 :" + (totalPriceC - (totalPriceC * GetMembershipId())).ToString();
 
                     }
                 }
@@ -317,7 +319,6 @@ namespace PickUp2U
                 string totalText = sc_total.Text;
                 string numericText = new string(totalText.Where(char.IsDigit).ToArray());
 
-                label5.Text = "값 : " + GetMembershipId().ToString();
                 if (int.TryParse(numericText, out int totalP))
                 {
                     int DisCount = (int)(totalP * GetMembershipId());
@@ -358,8 +359,8 @@ namespace PickUp2U
                         using (var insertCommand = new OracleCommand(insertQuery, connection))
                         {
                             int rowsAffected = insertCommand.ExecuteNonQuery();
-                            MessageBox.Show("Payment added successfully.");
                         }
+                        InsertIntoPickupProgress(paymentId);
                     }
                 }
             }
@@ -452,9 +453,42 @@ namespace PickUp2U
                     break;
             }
 
-            label5.Text = DisCount.ToString();
             return DisCount;
         }
+
+        private void InsertIntoPickupProgress(int paymentId)
+        {
+            try
+            {
+                string connectionString = "User Id=admin; Password=admin; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = xe)))";
+
+                using (var connection = new OracleConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string insertQuery = $"INSERT INTO PICKUP_PROGRESS (PAYMENT_ID, START_DATE, END_DATE, PICKUP_DATE) VALUES (:paymentId, NULL, NULL, NULL)";
+
+                    using (var command = new OracleCommand(insertQuery, connection))
+                    {
+                        command.Parameters.Add(new OracleParameter("paymentId", OracleDbType.Int32)).Value = paymentId;
+
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                        }
+                        else
+                        {
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
 
 
 

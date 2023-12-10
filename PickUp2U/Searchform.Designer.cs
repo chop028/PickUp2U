@@ -47,6 +47,8 @@ namespace PickUp2U
             this.sc_in = new System.Windows.Forms.Button();
             this.sc_Productid = new System.Windows.Forms.TextBox();
             this.shop_num = new System.Windows.Forms.Label();
+            this.discount = new System.Windows.Forms.Label();
+            this.total_amount = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.sc_hold)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sc_list)).BeginInit();
@@ -100,7 +102,7 @@ namespace PickUp2U
             // 
             this.sc_basket.FormattingEnabled = true;
             this.sc_basket.ItemHeight = 12;
-            this.sc_basket.Location = new System.Drawing.Point(560, 150);
+            this.sc_basket.Location = new System.Drawing.Point(557, 92);
             this.sc_basket.Name = "sc_basket";
             this.sc_basket.Size = new System.Drawing.Size(413, 196);
             this.sc_basket.TabIndex = 33;
@@ -120,7 +122,7 @@ namespace PickUp2U
             // 
             // sc_pay
             // 
-            this.sc_pay.Location = new System.Drawing.Point(605, 446);
+            this.sc_pay.Location = new System.Drawing.Point(596, 483);
             this.sc_pay.Margin = new System.Windows.Forms.Padding(2);
             this.sc_pay.Name = "sc_pay";
             this.sc_pay.Size = new System.Drawing.Size(126, 22);
@@ -132,10 +134,10 @@ namespace PickUp2U
             // sc_total
             // 
             this.sc_total.AutoSize = true;
-            this.sc_total.Font = new System.Drawing.Font("굴림", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.sc_total.Location = new System.Drawing.Point(559, 361);
+            this.sc_total.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.sc_total.Location = new System.Drawing.Point(554, 336);
             this.sc_total.Name = "sc_total";
-            this.sc_total.Size = new System.Drawing.Size(114, 24);
+            this.sc_total.Size = new System.Drawing.Size(76, 16);
             this.sc_total.TabIndex = 34;
             this.sc_total.Text = "총 금액 : ";
             // 
@@ -151,7 +153,7 @@ namespace PickUp2U
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(558, 110);
+            this.label4.Location = new System.Drawing.Point(555, 52);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(57, 12);
@@ -203,7 +205,7 @@ namespace PickUp2U
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(792, 446);
+            this.button7.Location = new System.Drawing.Point(783, 483);
             this.button7.Margin = new System.Windows.Forms.Padding(2);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(126, 22);
@@ -239,14 +241,34 @@ namespace PickUp2U
             this.shop_num.TabIndex = 37;
             this.shop_num.Text = "label5";
             // 
+            // discount
+            // 
+            this.discount.AutoSize = true;
+            this.discount.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.discount.Location = new System.Drawing.Point(554, 362);
+            this.discount.Name = "discount";
+            this.discount.Size = new System.Drawing.Size(100, 16);
+            this.discount.TabIndex = 38;
+            this.discount.Text = "- 할인 금액 :";
+            // 
+            // total_amount
+            // 
+            this.total_amount.AutoSize = true;
+            this.total_amount.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.total_amount.Location = new System.Drawing.Point(555, 428);
+            this.total_amount.Name = "total_amount";
+            this.total_amount.Size = new System.Drawing.Size(152, 21);
+            this.total_amount.TabIndex = 39;
+            this.total_amount.Text = "총 결제 금액 :";
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(634, 37);
+            this.label5.Location = new System.Drawing.Point(557, 398);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(38, 12);
-            this.label5.TabIndex = 38;
-            this.label5.Text = "label5";
+            this.label5.Size = new System.Drawing.Size(395, 12);
+            this.label5.TabIndex = 40;
+            this.label5.Text = "-----------------------------------------------------------------";
             // 
             // Searchform
             // 
@@ -254,6 +276,8 @@ namespace PickUp2U
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1013, 647);
             this.Controls.Add(this.label5);
+            this.Controls.Add(this.total_amount);
+            this.Controls.Add(this.discount);
             this.Controls.Add(this.shop_num);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.sc_pay);
@@ -300,6 +324,8 @@ namespace PickUp2U
         private System.Windows.Forms.Button sc_in;
         private System.Windows.Forms.TextBox sc_Productid;
         private System.Windows.Forms.Label shop_num;
+        private System.Windows.Forms.Label discount;
+        private System.Windows.Forms.Label total_amount;
         private System.Windows.Forms.Label label5;
     }
 }
