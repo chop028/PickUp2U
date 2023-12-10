@@ -86,7 +86,7 @@ namespace PickUp2U
         private void deleteBtn_Click(object sender, EventArgs e)
         {
             // 확인 다이얼로그 표시
-            DialogResult result = MessageBox.Show("주문을 삭제하시겠습니까?", "삭제 확인", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("주문 내역을 삭제하시겠습니까?", "삭제 확인", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
@@ -115,7 +115,7 @@ namespace PickUp2U
                             command.ExecuteNonQuery();
                         }
 
-                        MessageBox.Show("주문이 성공적으로 삭제되었습니다.", "성공", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("주문 내역이 성공적으로 삭제되었습니다.", "성공", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         // 주문 내역 다시 로드
                         LoadOrderHistory();
