@@ -21,6 +21,8 @@ namespace PickUp2U
         {
             InitializeComponent();
 
+            GetMembershipId();
+
             string connectionString = "User Id=admin; Password=admin; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = xe)))";
             string query = "SELECT * FROM SHOPS WHERE SHOP_STATUS = 0";
 
@@ -315,9 +317,10 @@ namespace PickUp2U
                 string totalText = sc_total.Text;
                 string numericText = new string(totalText.Where(char.IsDigit).ToArray());
 
+                label5.Text = "값 : " + GetMembershipId().ToString();
                 if (int.TryParse(numericText, out int totalP))
                 {
-                    int DisCount = (int)(totalP * 0.25);
+                    int DisCount = (int)(totalP * GetMembershipId());
                     InsertPayment(orderID, totalP, 0, DisCount , totalP-DisCount);
                 }
                 
@@ -407,6 +410,52 @@ namespace PickUp2U
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private double GetMembershipId()
+        {
+            string membershipId = string.Empty;
+
+            string connectionString = "User Id=admin; Password=admin; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = xe)))";
+
+            using (var connection = new OracleConnection(connectionString))
+            {
+                connection.Open();
+
+                string membershipIdQuery = $"SELECT MEMBERSHIP_ID FROM USERS WHERE USER_ID = '{userId}'";
+
+                using (var command = new OracleCommand(membershipIdQuery, connection))
+                {
+                    object result = command.ExecuteScalar();
+
+                    membershipId = result != null ? result.ToString() : string.Empty;
+                }
+            }
+
+            double DisCount;
+
+            switch (membershipId)
+            {
+                case "Bronze":
+                    DisCount = 0.05;
+                    break;
+                case "Silver":
+                    DisCount = 0.10;
+                    break;
+                case "Gold":
+                    DisCount = 0.15;
+                    break;
+                case "Diamonds":
+                    DisCount = 0.2;
+                    break;
+                default:
+                    DisCount = 1;
+                    break;
+            }
+
+            label5.Text = DisCount.ToString();
+            return DisCount;
+        }
+
 
 
     }

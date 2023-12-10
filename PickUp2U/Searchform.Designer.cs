@@ -47,6 +47,7 @@ namespace PickUp2U
             this.sc_in = new System.Windows.Forms.Button();
             this.sc_Productid = new System.Windows.Forms.TextBox();
             this.shop_num = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.sc_hold)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sc_list)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -238,11 +239,21 @@ namespace PickUp2U
             this.shop_num.TabIndex = 37;
             this.shop_num.Text = "label5";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(634, 37);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(38, 12);
+            this.label5.TabIndex = 38;
+            this.label5.Text = "label5";
+            // 
             // Searchform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1013, 647);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.shop_num);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.sc_pay);
@@ -289,5 +300,6 @@ namespace PickUp2U
         private System.Windows.Forms.Button sc_in;
         private System.Windows.Forms.TextBox sc_Productid;
         private System.Windows.Forms.Label shop_num;
+        private System.Windows.Forms.Label label5;
     }
 }
