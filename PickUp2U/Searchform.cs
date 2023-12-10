@@ -31,7 +31,6 @@ namespace PickUp2U
 
             adapter.Fill(dataTable);
 
-            // DataGridView인 sc_hold에 데이터 표시
             sc_hold.DataSource = dataTable;
 
         }

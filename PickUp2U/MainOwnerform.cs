@@ -46,5 +46,15 @@ namespace PickUp2U
             Loginform loginForm = new Loginform();
             loginForm.Show();
         }
+
+        OwnerShopform OwnerShop;
+
+        private void 보유매장조회ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            OwnerShop = new OwnerShopform();
+            OwnerShop.MdiParent = this;
+            OwnerShop.Show();
+        }
     }
 }

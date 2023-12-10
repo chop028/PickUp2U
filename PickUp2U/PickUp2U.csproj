@@ -83,6 +83,12 @@
     <Compile Include="OrderListform.Designer.cs">
       <DependentUpon>OrderListform.cs</DependentUpon>
     </Compile>
+    <Compile Include="OwnerShopform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OwnerShopform.Designer.cs">
+      <DependentUpon>OwnerShopform.cs</DependentUpon>
+    </Compile>
     <Compile Include="Paymentform.cs">
       <SubType>Form</SubType>
     </Compile>
