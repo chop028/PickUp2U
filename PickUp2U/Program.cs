@@ -16,7 +16,11 @@ namespace PickUp2U
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+<<<<<<< HEAD
             Application.Run(new ShopOrderHistoryform());
+=======
+            Application.Run(new OrderListform());
+>>>>>>> a7148f9b4085a33afe6e7cd5e4f7c13827f604cf
         }
     }
 }

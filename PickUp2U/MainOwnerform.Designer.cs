@@ -70,14 +70,14 @@ namespace PickUp2U
             // 매장등록ToolStripMenuItem
             // 
             this.매장등록ToolStripMenuItem.Name = "매장등록ToolStripMenuItem";
-            this.매장등록ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.매장등록ToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.매장등록ToolStripMenuItem.Text = "매장 등록";
             this.매장등록ToolStripMenuItem.Click += new System.EventHandler(this.매장등록ToolStripMenuItem_Click);
             // 
             // 상품등록ToolStripMenuItem
             // 
             this.상품등록ToolStripMenuItem.Name = "상품등록ToolStripMenuItem";
-            this.상품등록ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.상품등록ToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.상품등록ToolStripMenuItem.Text = "상품 등록";
             this.상품등록ToolStripMenuItem.Click += new System.EventHandler(this.상품등록ToolStripMenuItem_Click);
             // 
@@ -94,7 +94,7 @@ namespace PickUp2U
             // 상품조회ToolStripMenuItem
             // 
             this.상품조회ToolStripMenuItem.Name = "상품조회ToolStripMenuItem";
-            this.상품조회ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.상품조회ToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.상품조회ToolStripMenuItem.Text = "상품 조회";
             this.상품조회ToolStripMenuItem.Click += new System.EventHandler(this.상품조회ToolStripMenuItem_Click);
             // 
@@ -108,7 +108,11 @@ namespace PickUp2U
             // 보유매장조회ToolStripMenuItem
             // 
             this.보유매장조회ToolStripMenuItem.Name = "보유매장조회ToolStripMenuItem";
+<<<<<<< HEAD
             this.보유매장조회ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+=======
+            this.보유매장조회ToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+>>>>>>> a7148f9b4085a33afe6e7cd5e4f7c13827f604cf
             this.보유매장조회ToolStripMenuItem.Text = "보유 매장 조회";
             this.보유매장조회ToolStripMenuItem.Click += new System.EventHandler(this.보유매장조회ToolStripMenuItem_Click);
             // 
@@ -123,7 +127,7 @@ namespace PickUp2U
             // 픽업관리ToolStripMenuItem
             // 
             this.픽업관리ToolStripMenuItem.Name = "픽업관리ToolStripMenuItem";
-            this.픽업관리ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.픽업관리ToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.픽업관리ToolStripMenuItem.Text = "픽업 관리";
             this.픽업관리ToolStripMenuItem.Click += new System.EventHandler(this.픽업관리ToolStripMenuItem_Click);
             // 
