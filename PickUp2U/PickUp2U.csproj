@@ -135,6 +135,18 @@
     <Compile Include="Shopform.Designer.cs">
       <DependentUpon>Shopform.cs</DependentUpon>
     </Compile>
+    <Compile Include="ShopOrderHistoryform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShopOrderHistoryform.Designer.cs">
+      <DependentUpon>ShopOrderHistoryform.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserOrderHistoryform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserOrderHistoryform.Designer.cs">
+      <DependentUpon>UserOrderHistoryform.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Loginform.resx">
       <DependentUpon>Loginform.cs</DependentUpon>
     </EmbeddedResource>
@@ -179,6 +191,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Shopform.resx">
       <DependentUpon>Shopform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShopOrderHistoryform.resx">
+      <DependentUpon>ShopOrderHistoryform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserOrderHistoryform.resx">
+      <DependentUpon>UserOrderHistoryform.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
