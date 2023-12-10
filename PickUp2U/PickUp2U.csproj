@@ -77,6 +77,18 @@
     <Compile Include="OrderDetailform.Designer.cs">
       <DependentUpon>OrderDetailform.cs</DependentUpon>
     </Compile>
+    <Compile Include="OrderListform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderListform.Designer.cs">
+      <DependentUpon>OrderListform.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OwnerShopform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OwnerShopform.Designer.cs">
+      <DependentUpon>OwnerShopform.cs</DependentUpon>
+    </Compile>
     <Compile Include="Paymentform.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,6 +158,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="OrderDetailform.resx">
       <DependentUpon>OrderDetailform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderListform.resx">
+      <DependentUpon>OrderListform.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Paymentform.resx">
       <DependentUpon>Paymentform.cs</DependentUpon>

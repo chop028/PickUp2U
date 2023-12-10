@@ -21,6 +21,8 @@ namespace PickUp2U
         {
             InitializeComponent();
 
+            GetMembershipId();
+
             string connectionString = "User Id=admin; Password=admin; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = xe)))";
             string query = "SELECT * FROM SHOPS WHERE SHOP_STATUS = 0";
 
@@ -29,7 +31,6 @@ namespace PickUp2U
 
             adapter.Fill(dataTable);
 
-            // DataGridView인 sc_hold에 데이터 표시
             sc_hold.DataSource = dataTable;
 
         }
@@ -183,7 +184,9 @@ namespace PickUp2U
                             totalPriceC += pPrice * pquantity;
                         }
 
-                        sc_total.Text = "총 금액 :" + totalPriceC.ToString();
+                        sc_total.Text = "총 상품 가격 :" + totalPriceC.ToString();
+                        discount.Text = "- 할인 금액 :" + (totalPriceC * GetMembershipId()).ToString();
+                        total_amount.Text = "총 결제 금액 :" + (totalPriceC - (totalPriceC * GetMembershipId())).ToString();
 
                     }
                 }
@@ -248,9 +251,8 @@ namespace PickUp2U
 
                                 inesrtPRODUCT_ORDERS(newOrderId,productOrderId);
                                 /*             ORDERS 테이블 insert                     */
-                           
-
-                            }
+                               
+                        }
 
                         }
                     }
@@ -299,20 +301,74 @@ namespace PickUp2U
                     {
                         int productRowsAffected = productInsertCommand.ExecuteNonQuery();
 
-                        /*
-                        if (productRowsAffected > 0)
+                    
+                    /*
+                    if (productRowsAffected > 0)
+                    {
+                        MessageBox.Show($"주문 {productOrderID}가 완료되었습니다.");
+                    }
+                    else
+                    {
+                        MessageBox.Show($"주문 {productOrderID}에 실패했습니다.");
+                    }
+                    */
+                    }
+                }
+                
+                string totalText = sc_total.Text;
+                string numericText = new string(totalText.Where(char.IsDigit).ToArray());
+
+                if (int.TryParse(numericText, out int totalP))
+                {
+                    int DisCount = (int)(totalP * GetMembershipId());
+                    InsertPayment(orderID, totalP, 0, DisCount , totalP-DisCount);
+                }
+                
+             
+            }
+        }
+
+        private void InsertPayment(int orderId, int paymentAmount, int paymentType, int membershipDiscount, int totalAmount)
+        {
+            try
+            {
+                string connectionString = "User Id=admin; Password=admin; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = xe)) )";
+
+                using (var connection = new OracleConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string getMaxPaymentIdQuery = "SELECT MAX(PAYMENT_ID) FROM PAYMENTS";
+
+                    using (var maxPaymentIdCommand = new OracleCommand(getMaxPaymentIdQuery, connection))
+                    {
+                        object paymentIdResult = maxPaymentIdCommand.ExecuteScalar();
+                        int paymentId = 1;
+
+                        if (paymentIdResult != DBNull.Value)
                         {
-                            MessageBox.Show($"주문 {productOrderID}가 완료되었습니다.");
+                            paymentId = Convert.ToInt32(paymentIdResult) + 1;
                         }
-                        else
+
+                        DateTime paymentDate = DateTime.Now;
+                        string formattedPaymentDate = paymentDate.ToString("yyyy-MM-dd HH:mm:ss");
+
+                        string insertQuery = $"INSERT INTO PAYMENTS (PAYMENT_ID, ORDER_ID, PAYMENT_AMOUNT, PAYMENT_TYPE, MEMBERSHIP_DISCOUNT, TOTAL_AMOUNT, PAYMENT_DATE) VALUES ({paymentId}, {orderId}, {paymentAmount}, {paymentType}, {membershipDiscount}, {totalAmount}, TO_TIMESTAMP('{formattedPaymentDate}', 'YYYY-MM-DD HH24:MI:SS'))";
+
+                        using (var insertCommand = new OracleCommand(insertQuery, connection))
                         {
-                            MessageBox.Show($"주문 {productOrderID}에 실패했습니다.");
+                            int rowsAffected = insertCommand.ExecuteNonQuery();
                         }
-                        */
+                        InsertIntoPickupProgress(paymentId);
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
+
 
         private void sc_hold_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -354,6 +410,85 @@ namespace PickUp2U
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private double GetMembershipId()
+        {
+            string membershipId = string.Empty;
+
+            string connectionString = "User Id=admin; Password=admin; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = xe)))";
+
+            using (var connection = new OracleConnection(connectionString))
+            {
+                connection.Open();
+
+                string membershipIdQuery = $"SELECT MEMBERSHIP_ID FROM USERS WHERE USER_ID = '{userId}'";
+
+                using (var command = new OracleCommand(membershipIdQuery, connection))
+                {
+                    object result = command.ExecuteScalar();
+
+                    membershipId = result != null ? result.ToString() : string.Empty;
+                }
+            }
+
+            double DisCount;
+
+            switch (membershipId)
+            {
+                case "Bronze":
+                    DisCount = 0.05;
+                    break;
+                case "Silver":
+                    DisCount = 0.10;
+                    break;
+                case "Gold":
+                    DisCount = 0.15;
+                    break;
+                case "Diamonds":
+                    DisCount = 0.2;
+                    break;
+                default:
+                    DisCount = 1;
+                    break;
+            }
+
+            return DisCount;
+        }
+
+        private void InsertIntoPickupProgress(int paymentId)
+        {
+            try
+            {
+                string connectionString = "User Id=admin; Password=admin; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = xe)))";
+
+                using (var connection = new OracleConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string insertQuery = $"INSERT INTO PICKUP_PROGRESS (PAYMENT_ID, START_DATE, END_DATE, PICKUP_DATE) VALUES (:paymentId, NULL, NULL, NULL)";
+
+                    using (var command = new OracleCommand(insertQuery, connection))
+                    {
+                        command.Parameters.Add(new OracleParameter("paymentId", OracleDbType.Int32)).Value = paymentId;
+
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                        }
+                        else
+                        {
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+
 
 
     }

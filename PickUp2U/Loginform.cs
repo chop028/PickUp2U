@@ -24,7 +24,6 @@ namespace PickUp2U
             Registerform Registerform = new Registerform(); // 이동하고자 하는 폼으로 변경
             Registerform.ShowDialog();
         }
-
         private void BtnLogin_Click(object sender, EventArgs e)
         {
 
@@ -58,16 +57,20 @@ namespace PickUp2U
                             {
                                 MainUserform.userId = userId;
                                 MessageBox.Show("[0] 환영합니다.\n 회원번호 = " +userId);
-                                MainUserform userForm = new MainUserform();
+                                MainUserform userForm = new MainUserform(userId);
+                                OrderDetailform orderDetailForm = new OrderDetailform(userId);
+
                                 userForm.Show();
+
                                 this.Hide();
                             }
                             else if (userType == 1)
                             {
                                 MainOwnerform.userId = userId;
                                 MessageBox.Show("[1] 환영합니다.\n 회원번호 = " + userId);
-                                MainOwnerform ownerForm = new MainOwnerform();
+                                MainOwnerform ownerForm = new MainOwnerform(userId);
                                 ownerForm.Show();
+
                                 this.Hide();
                             }
                         }
@@ -88,8 +91,9 @@ namespace PickUp2U
             }
         }
 
+        private void BtnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
-
-
-
 }

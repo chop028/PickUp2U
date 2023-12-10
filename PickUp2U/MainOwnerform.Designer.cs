@@ -35,15 +35,19 @@ namespace PickUp2U
             this.상품등록ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.조회ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.상품조회ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.주문조회ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.픽업관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_userid = new System.Windows.Forms.Label();
+            this.btnLogout = new System.Windows.Forms.Button();
+            this.보유매장조회ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.등록ToolStripMenuItem,
             this.조회ToolStripMenuItem,
@@ -66,21 +70,23 @@ namespace PickUp2U
             // 매장등록ToolStripMenuItem
             // 
             this.매장등록ToolStripMenuItem.Name = "매장등록ToolStripMenuItem";
-            this.매장등록ToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.매장등록ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.매장등록ToolStripMenuItem.Text = "매장 등록";
             this.매장등록ToolStripMenuItem.Click += new System.EventHandler(this.매장등록ToolStripMenuItem_Click);
             // 
             // 상품등록ToolStripMenuItem
             // 
             this.상품등록ToolStripMenuItem.Name = "상품등록ToolStripMenuItem";
-            this.상품등록ToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.상품등록ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.상품등록ToolStripMenuItem.Text = "상품 등록";
             this.상품등록ToolStripMenuItem.Click += new System.EventHandler(this.상품등록ToolStripMenuItem_Click);
             // 
             // 조회ToolStripMenuItem
             // 
             this.조회ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.상품조회ToolStripMenuItem});
+            this.상품조회ToolStripMenuItem,
+            this.주문조회ToolStripMenuItem,
+            this.보유매장조회ToolStripMenuItem});
             this.조회ToolStripMenuItem.Name = "조회ToolStripMenuItem";
             this.조회ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
             this.조회ToolStripMenuItem.Text = "조회";
@@ -88,8 +94,14 @@ namespace PickUp2U
             // 상품조회ToolStripMenuItem
             // 
             this.상품조회ToolStripMenuItem.Name = "상품조회ToolStripMenuItem";
-            this.상품조회ToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.상품조회ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.상품조회ToolStripMenuItem.Text = "상품 조회";
+            // 
+            // 주문조회ToolStripMenuItem
+            // 
+            this.주문조회ToolStripMenuItem.Name = "주문조회ToolStripMenuItem";
+            this.주문조회ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.주문조회ToolStripMenuItem.Text = "주문 조회";
             // 
             // 관리ToolStripMenuItem
             // 
@@ -102,13 +114,13 @@ namespace PickUp2U
             // 픽업관리ToolStripMenuItem
             // 
             this.픽업관리ToolStripMenuItem.Name = "픽업관리ToolStripMenuItem";
-            this.픽업관리ToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.픽업관리ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.픽업관리ToolStripMenuItem.Text = "픽업 관리";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(814, 9);
+            this.label1.Location = new System.Drawing.Point(668, 5);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 12);
             this.label1.TabIndex = 2;
@@ -117,17 +129,36 @@ namespace PickUp2U
             // txt_userid
             // 
             this.txt_userid.AutoSize = true;
-            this.txt_userid.Location = new System.Drawing.Point(874, 9);
+            this.txt_userid.Location = new System.Drawing.Point(731, 5);
             this.txt_userid.Name = "txt_userid";
             this.txt_userid.Size = new System.Drawing.Size(17, 12);
             this.txt_userid.TabIndex = 3;
             this.txt_userid.Text = "[]";
             // 
+            // btnLogout
+            // 
+            this.btnLogout.Location = new System.Drawing.Point(593, 0);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(69, 22);
+            this.btnLogout.TabIndex = 5;
+            this.btnLogout.Text = "로그아웃";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
+            // 보유매장조회ToolStripMenuItem
+            // 
+            this.보유매장조회ToolStripMenuItem.Name = "보유매장조회ToolStripMenuItem";
+            this.보유매장조회ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.보유매장조회ToolStripMenuItem.Text = "보유 매장 조회";
+            this.보유매장조회ToolStripMenuItem.Click += new System.EventHandler(this.보유매장조회ToolStripMenuItem_Click);
+            // 
             // MainOwnerform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1044, 586);
+            this.ClientSize = new System.Drawing.Size(1044, 530);
+            this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.txt_userid);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
@@ -155,5 +186,8 @@ namespace PickUp2U
         private System.Windows.Forms.ToolStripMenuItem 픽업관리ToolStripMenuItem;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label txt_userid;
+        private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.ToolStripMenuItem 주문조회ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 보유매장조회ToolStripMenuItem;
     }
 }
