@@ -51,7 +51,7 @@ namespace PickUp2U
             // progressBar
             // 
             this.progressBar.Location = new System.Drawing.Point(36, 61);
-            this.progressBar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.progressBar.Margin = new System.Windows.Forms.Padding(2);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(334, 38);
             this.progressBar.TabIndex = 1;
@@ -101,7 +101,7 @@ namespace PickUp2U
             this.Controls.Add(this.lblWaitingTime);
             this.Controls.Add(this.lblInProgressTime);
             this.Controls.Add(this.lblRemainingTime);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Progressform";
             this.Text = "Progressform";
             this.ResumeLayout(false);
