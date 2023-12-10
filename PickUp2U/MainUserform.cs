@@ -46,5 +46,12 @@ namespace PickUp2U
             Loginform loginForm = new Loginform();
             loginForm.Show();
         }
+
+        private void 픽업정보ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            UserOrderHistoryform userOrderHistoryform = new UserOrderHistoryform();
+            userOrderHistoryform.Show();
+        }
     }
 }

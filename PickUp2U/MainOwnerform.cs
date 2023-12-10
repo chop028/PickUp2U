@@ -57,9 +57,29 @@ namespace PickUp2U
             OwnerShop.Show();
         }
 
+<<<<<<< HEAD
+        private void 픽업관리ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            ShopOrderHistoryform shopOrderHistoryform = new ShopOrderHistoryform();
+            shopOrderHistoryform.Show();
+        }
+
+        private void 상품조회ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void 주문조회ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            OrderListform orderListform = new OrderListform();
+            orderListform.Show();
+=======
         private void 주문조회ToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+>>>>>>> a7148f9b4085a33afe6e7cd5e4f7c13827f604cf
         }
     }
 }
