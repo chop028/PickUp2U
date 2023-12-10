@@ -56,5 +56,10 @@ namespace PickUp2U
             OwnerShop.MdiParent = this;
             OwnerShop.Show();
         }
+
+        private void 주문조회ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
