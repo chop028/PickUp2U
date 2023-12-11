@@ -42,14 +42,12 @@ namespace PickUp2U
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            this.Close();
             Loginform loginForm = new Loginform();
             loginForm.Show();
         }
 
         private void 픽업정보ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
             UserOrderHistoryform userOrderHistoryform = new UserOrderHistoryform();
             userOrderHistoryform.Show();
         }
