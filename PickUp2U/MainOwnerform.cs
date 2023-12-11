@@ -37,7 +37,7 @@ namespace PickUp2U
 
             product = new Productform();
             product.MdiParent = this;
-            product .Show();  
+            product.Show();
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
@@ -56,30 +56,29 @@ namespace PickUp2U
             OwnerShop.MdiParent = this;
             OwnerShop.Show();
         }
-
-<<<<<<< HEAD
+        ShopOrderHistoryform shopOrderHistory;
         private void 픽업관리ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
-            ShopOrderHistoryform shopOrderHistoryform = new ShopOrderHistoryform();
-            shopOrderHistoryform.Show();
+         
+
+            shopOrderHistory = new ShopOrderHistoryform();
+            shopOrderHistory.MdiParent = this;
+            shopOrderHistory.Show();
         }
 
         private void 상품조회ToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
-
+        OrderListform orderList;
         private void 주문조회ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
-            OrderListform orderListform = new OrderListform();
-            orderListform.Show();
-=======
-        private void 주문조회ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+            orderList = new OrderListform();
+            orderList.MdiParent = this;
+            orderList.Show();
 
->>>>>>> a7148f9b4085a33afe6e7cd5e4f7c13827f604cf
+           
         }
     }
+
 }

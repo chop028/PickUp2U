@@ -124,3 +124,4 @@ C:\Users\User\Desktop\PU2U1210\PickUp2U\obj\Debug\PickUp2U.csproj.CopyComplete
 C:\Users\User\Desktop\PU2U1210\PickUp2U\obj\Debug\PickUp2U.exe
 C:\Users\User\Desktop\PU2U1210\PickUp2U\obj\Debug\PickUp2U.pdb
 >>>>>>> 3ffd968e0ecbfb4486d8c43dc4ec7d295c3eccd7
+C:\Users\vlcl7\Source\Repos\PickUp2U\PickUp2U\obj\Debug\PickUp2U.OrderListform.resources

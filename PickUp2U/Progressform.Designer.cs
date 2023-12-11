@@ -41,50 +41,51 @@ namespace PickUp2U
             // lblRemainingTime
             // 
             this.lblRemainingTime.AutoSize = true;
-            this.lblRemainingTime.Location = new System.Drawing.Point(104, 21);
+            this.lblRemainingTime.Location = new System.Drawing.Point(221, 40);
             this.lblRemainingTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRemainingTime.Name = "lblRemainingTime";
-            this.lblRemainingTime.Size = new System.Drawing.Size(57, 12);
+            this.lblRemainingTime.Size = new System.Drawing.Size(81, 12);
             this.lblRemainingTime.TabIndex = 0;
-            this.lblRemainingTime.Text = "예상시간:";
+            this.lblRemainingTime.Text = "남은시간:32분";
             // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(36, 61);
+            this.progressBar.Location = new System.Drawing.Point(100, 67);
             this.progressBar.Margin = new System.Windows.Forms.Padding(2);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(334, 38);
             this.progressBar.TabIndex = 1;
+            this.progressBar.Value = 50;
             // 
             // lblInProgressTime
             // 
             this.lblInProgressTime.AutoSize = true;
-            this.lblInProgressTime.Location = new System.Drawing.Point(86, 127);
+            this.lblInProgressTime.Location = new System.Drawing.Point(82, 156);
             this.lblInProgressTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblInProgressTime.Name = "lblInProgressTime";
-            this.lblInProgressTime.Size = new System.Drawing.Size(38, 12);
+            this.lblInProgressTime.Size = new System.Drawing.Size(155, 12);
             this.lblInProgressTime.TabIndex = 0;
-            this.lblInProgressTime.Text = "label1";
+            this.lblInProgressTime.Text = "상품준비: 2023-11-23-11:30";
             // 
             // lblWaitingTime
             // 
             this.lblWaitingTime.AutoSize = true;
-            this.lblWaitingTime.Location = new System.Drawing.Point(86, 151);
+            this.lblWaitingTime.Location = new System.Drawing.Point(82, 180);
             this.lblWaitingTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblWaitingTime.Name = "lblWaitingTime";
-            this.lblWaitingTime.Size = new System.Drawing.Size(38, 12);
+            this.lblWaitingTime.Size = new System.Drawing.Size(155, 12);
             this.lblWaitingTime.TabIndex = 0;
-            this.lblWaitingTime.Text = "label1";
+            this.lblWaitingTime.Text = "준비완료: 2023-11-23-11:30";
             // 
             // lblCompleteTime
             // 
             this.lblCompleteTime.AutoSize = true;
-            this.lblCompleteTime.Location = new System.Drawing.Point(86, 174);
+            this.lblCompleteTime.Location = new System.Drawing.Point(82, 203);
             this.lblCompleteTime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCompleteTime.Name = "lblCompleteTime";
-            this.lblCompleteTime.Size = new System.Drawing.Size(38, 12);
+            this.lblCompleteTime.Size = new System.Drawing.Size(57, 12);
             this.lblCompleteTime.TabIndex = 0;
-            this.lblCompleteTime.Text = "label1";
+            this.lblCompleteTime.Text = "픽업완료:";
             // 
             // timer1
             // 
