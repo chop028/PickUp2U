@@ -42,7 +42,6 @@ namespace PickUp2U
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            this.Close();
             Loginform loginForm = new Loginform();
             loginForm.Show();
         }
