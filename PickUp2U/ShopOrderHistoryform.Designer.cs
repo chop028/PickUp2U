@@ -37,31 +37,36 @@ namespace PickUp2U
             // dataGridViewOrderHistory
             // 
             this.dataGridViewOrderHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewOrderHistory.Location = new System.Drawing.Point(31, 127);
+            this.dataGridViewOrderHistory.Location = new System.Drawing.Point(58, 254);
+            this.dataGridViewOrderHistory.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.dataGridViewOrderHistory.Name = "dataGridViewOrderHistory";
+            this.dataGridViewOrderHistory.RowHeadersWidth = 82;
             this.dataGridViewOrderHistory.RowTemplate.Height = 23;
-            this.dataGridViewOrderHistory.Size = new System.Drawing.Size(648, 119);
+            this.dataGridViewOrderHistory.Size = new System.Drawing.Size(1203, 238);
             this.dataGridViewOrderHistory.TabIndex = 0;
             this.dataGridViewOrderHistory.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewOrderHistory_CellClick_1);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(38, 102);
+            this.label1.Location = new System.Drawing.Point(71, 204);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 12);
+            this.label1.Size = new System.Drawing.Size(138, 24);
             this.label1.TabIndex = 1;
             this.label1.Text = "주문 리스트";
             // 
             // ShopOrderHistoryform
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1486, 900);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridViewOrderHistory);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "ShopOrderHistoryform";
             this.Text = "ShopOrderHistoryform";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrderHistory)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

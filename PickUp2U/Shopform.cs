@@ -196,6 +196,7 @@ namespace PickUp2U
 
                     dbc.DB_Open();
                     DBGrid.DataSource = dbc.PhoneTable.DefaultView;
+                    MessageBox.Show("매장 정보가 수정되었습니다.");
                 }
                 else
                 {

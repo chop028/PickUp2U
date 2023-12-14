@@ -63,14 +63,11 @@ namespace PickUp2U
             shopOrderHistory.Show();
         }
 
-        private void 상품조회ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
         OrderListForm orderList;
         private void 주문조회ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             orderList = new OrderListForm();
+            orderList.userId = userId;
             orderList.MdiParent = this;
             orderList.Show();  
         }

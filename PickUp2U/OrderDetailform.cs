@@ -1,12 +1,6 @@
 ﻿using Oracle.DataAccess.Client;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PickUp2U
@@ -16,24 +10,27 @@ namespace PickUp2U
         public int userId;
         private bool eventsRegistered = false;
         string connectionString = "User Id=admin; Password=admin; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = xe)) ); ";
+
         public OrderDetailform(int userId)
         {
             InitializeComponent();
             this.userId = userId;
 
-            deleteBtn.Click -= deleteBtn_Click;
-            deleteBtn.Click += deleteBtn_Click;
-
-            dataGridViewOrders.CellClick -= dataGridViewOrders_CellClick;
-            dataGridViewOrders.CellClick += dataGridViewOrders_CellClick;
-
-            eventsRegistered = true;
+            // 이벤트 핸들러 등록
+            if (!eventsRegistered)
+            {
+                deleteBtn.Click += deleteBtn_Click;
+                deleteBtn.Click -= deleteBtn_Click;
+                dataGridViewOrders.CellClick += dataGridViewOrders_CellClick;
+                eventsRegistered = true;
+            }
         }
-        
+
         private void showlistBtn_Click(object sender, EventArgs e)
         {
             LoadOrderHistory();
         }
+
         private void LoadOrderHistory()
         {
             try
@@ -86,6 +83,8 @@ namespace PickUp2U
         private void deleteBtn_Click(object sender, EventArgs e)
         {
             // 확인 다이얼로그 표시
+            Console.WriteLine("deleteBtn_Click called");
+
             DialogResult result = MessageBox.Show("주문 내역을 삭제하시겠습니까?", "삭제 확인", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
@@ -99,34 +98,63 @@ namespace PickUp2U
                     {
                         connection.Open();
 
-                        // 자식 레코드 삭제
-                        string deleteChildQuery = "DELETE FROM PRODUCT_ORDERS WHERE ORDER_ID = :orderId";
-                        using (OracleCommand childCommand = new OracleCommand(deleteChildQuery, connection))
+                        using (OracleTransaction transaction = connection.BeginTransaction())
                         {
-                            childCommand.Parameters.Add(new OracleParameter("orderId", orderId));
-                            childCommand.ExecuteNonQuery();
+                            try
+                            {
+                                // 자식 레코드 삭제: PICKUP_PROGRESS, PAYMENTS, PRODUCT_ORDERS    
+                                string deleteChildQuery1 = "DELETE FROM PICKUP_PROGRESS WHERE PAYMENT_ID IN (SELECT PAYMENT_ID FROM PAYMENTS WHERE ORDER_ID = :orderId)";
+                                using (OracleCommand childCommand1 = new OracleCommand(deleteChildQuery1, connection))
+                                {
+                                    childCommand1.Parameters.Add(new OracleParameter("orderId", orderId));
+                                    childCommand1.ExecuteNonQuery();
+                                }
+
+                                string deleteChildQuery2 = "DELETE FROM PAYMENTS WHERE ORDER_ID = :orderId";
+                                using (OracleCommand childCommand2 = new OracleCommand(deleteChildQuery2, connection))
+                                {
+                                    childCommand2.Parameters.Add(new OracleParameter("orderId", orderId));
+                                    childCommand2.ExecuteNonQuery();
+                                }
+
+                                string deleteChildQuery3 = "DELETE FROM PRODUCT_ORDERS WHERE ORDER_ID = :orderId";
+                                using (OracleCommand childCommand3 = new OracleCommand(deleteChildQuery3, connection))
+                                {
+                                    childCommand3.Parameters.Add(new OracleParameter("orderId", orderId));
+                                    childCommand3.ExecuteNonQuery();
+                                }
+
+                                // 부모 레코드 삭제: ORDERS
+                                string deleteQuery = "DELETE FROM ORDERS WHERE ORDER_ID = :orderId";
+                                using (OracleCommand command = new OracleCommand(deleteQuery, connection))
+                                {
+                                    command.Parameters.Add(new OracleParameter("orderId", orderId));
+                                    command.ExecuteNonQuery();
+                                }
+
+                                // 트랜잭션 커밋
+                                transaction.Commit();
+
+                                MessageBox.Show("주문 내역이 성공적으로 삭제되었습니다.", "성공", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                // 주문 내역 다시 로드
+                                LoadOrderHistory();
+                            }
+                            catch (Exception ex)
+                            {
+                                // 트랜잭션 롤백
+                                transaction.Rollback();
+
+                                MessageBox.Show("트랜잭션 오류: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
-
-                        // 부모 레코드 삭제
-                        string deleteQuery = "DELETE FROM ORDERS WHERE ORDER_ID = :orderId";
-                        using (OracleCommand command = new OracleCommand(deleteQuery, connection))
-                        {
-                            command.Parameters.Add(new OracleParameter("orderId", orderId));
-                            command.ExecuteNonQuery();
-                        }
-
-                        MessageBox.Show("주문 내역이 성공적으로 삭제되었습니다.", "성공", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        // 주문 내역 다시 로드
-                        LoadOrderHistory();
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("연결 오류: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
-
     }
 }

@@ -143,5 +143,38 @@ namespace PickUp2U
                     MessageBox.Show(ex.Message);
                 }
             }
+        private void Pd_UdBtn_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(Pd_id.Text))
+            {
+                MessageBox.Show("수정할 제품번호를 입력하세요.");
+                return;
+            }
+
+            try
+            {
+                DataRow[] productRows = dbc.PhoneTable.Select($"PRODUCT_ID = {Pd_id.Text}");
+
+                if (productRows.Length > 0)
+                {
+                    string productName = Pd_name.Text;
+                    string productPrice = Pd_price.Text;
+                    string productStock = Pd_stock.Text;
+
+                    // Update the values in the DataRow
+                    productRows[0]["PRODUCT_NAME"] = productName;
+                    productRows[0]["PRICE"] = productPrice;
+                    productRows[0]["STOCK_QUANTITY"] = productStock;
+
+                    // Update the database table 'PRODUCTS'
+                    dbc.DBAdapter.Update(dbc.DS, "PRODUCTS");
+                    MessageBox.Show("상품 정보가 수정되었습니다.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

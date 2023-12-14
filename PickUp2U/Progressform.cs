@@ -89,27 +89,25 @@ namespace PickUp2U
                         {
                             lblInProgressTime.Text = "상품준비: " + Convert.ToDateTime(start_date).ToString();
                         }
-
-                        // PICKUP_DATE 값이 NULL이거나 0001-01-01 00:00:00인 경우 처리
-                        object pickup_date = reader["PICKUP_DATE"];
-                        if (pickup_date == DBNull.Value || Convert.ToDateTime(pickup_date) == DateTime.MinValue)
+                        // END_DATE 값이 NULL이거나 0001-01-01 00:00:00인 경우 처리
+                        object end_date = reader["END_DATE"];
+                        if (end_date == DBNull.Value || Convert.ToDateTime(end_date) == DateTime.MinValue)
                         {
                             lblWaitingTime.Text = "준비완료: "; // 혹은 원하는 디폴트 텍스트 설정
                         }
                         else
                         {
-                            lblWaitingTime.Text = "준비완료: " + Convert.ToDateTime(pickup_date).ToString();
+                            lblWaitingTime.Text = "준비완료: " + Convert.ToDateTime(end_date).ToString();
                         }
-
-                        // END_DATE 값이 NULL이거나 0001-01-01 00:00:00인 경우 처리
-                        object end_date = reader["END_DATE"];
-                        if (end_date == DBNull.Value || Convert.ToDateTime(end_date) == DateTime.MinValue)
+                        // PICKUP_DATE 값이 NULL이거나 0001-01-01 00:00:00인 경우 처리
+                        object pickup_date = reader["PICKUP_DATE"];
+                        if (pickup_date == DBNull.Value || Convert.ToDateTime(pickup_date) == DateTime.MinValue)
                         {
                             lblCompleteTime.Text = "픽업완료: "; // 혹은 원하는 디폴트 텍스트 설정
                         }
                         else
                         {
-                            lblCompleteTime.Text = "픽업완료: " + Convert.ToDateTime(end_date).ToString();
+                            lblCompleteTime.Text = "픽업완료: " + Convert.ToDateTime(pickup_date).ToString();
                         }
                         string shopName = Convert.ToString(reader["SHOP_NAME"]);
                         string shopLocation = Convert.ToString(reader["SHOP_LOCATION"]);
@@ -167,18 +165,25 @@ namespace PickUp2U
 
 
 
-        private void UpdateRemainingTime()
-        {
-           
-            int remainingMinutes = expectedTimeInSeconds/ 60; // 초를 분 단위로 변환
-            if (remainingMinutes < 0)
-            {
-                remainingMinutes = 0; // 음수일 경우 0으로 설정
-            }
+private void UpdateRemainingTime()
+{
+    // PICKUP_DATE 값이 NULL이거나 0001-01-01 00:00:00인 경우
+    if (endDate != DateTime.MinValue)
+    {
+        lblRemainingTime.Text = "남은시간: 0분";
+        UpdateProgressBar();
+        return;
+    }
 
-            lblRemainingTime.Text = "남은시간: " + remainingMinutes.ToString() + "분";
-            UpdateProgressBar();
-        }
+    int remainingMinutes = expectedTimeInSeconds / 60; // 초를 분 단위로 변환
+    if (remainingMinutes < 0)
+    {
+        remainingMinutes = 0; // 음수일 경우 0으로 설정
+    }
+
+    lblRemainingTime.Text = "남은시간: " + remainingMinutes.ToString() + "분";
+    UpdateProgressBar();
+}
 
         private void Progressform_Load(object sender, EventArgs e)
         {

@@ -49,17 +49,18 @@ namespace PickUp2U
             // Pd_UdBtn
             // 
             this.Pd_UdBtn.Location = new System.Drawing.Point(390, 326);
-            this.Pd_UdBtn.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Pd_UdBtn.Margin = new System.Windows.Forms.Padding(6);
             this.Pd_UdBtn.Name = "Pd_UdBtn";
             this.Pd_UdBtn.Size = new System.Drawing.Size(126, 78);
             this.Pd_UdBtn.TabIndex = 67;
             this.Pd_UdBtn.Text = "상품 수정";
             this.Pd_UdBtn.UseVisualStyleBackColor = true;
+            this.Pd_UdBtn.Click += new System.EventHandler(this.Pd_UdBtn_Click);
             // 
             // Pd_Del
             // 
             this.Pd_Del.Location = new System.Drawing.Point(425, 766);
-            this.Pd_Del.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Pd_Del.Margin = new System.Windows.Forms.Padding(6);
             this.Pd_Del.Name = "Pd_Del";
             this.Pd_Del.Size = new System.Drawing.Size(126, 42);
             this.Pd_Del.TabIndex = 66;
@@ -71,7 +72,7 @@ namespace PickUp2U
             // 
             this.DBGrid_PD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DBGrid_PD.Location = new System.Drawing.Point(87, 438);
-            this.DBGrid_PD.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.DBGrid_PD.Margin = new System.Windows.Forms.Padding(6);
             this.DBGrid_PD.Name = "DBGrid_PD";
             this.DBGrid_PD.RowHeadersWidth = 82;
             this.DBGrid_PD.RowTemplate.Height = 23;
@@ -82,7 +83,7 @@ namespace PickUp2U
             // Pd_addBtn
             // 
             this.Pd_addBtn.Location = new System.Drawing.Point(173, 326);
-            this.Pd_addBtn.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Pd_addBtn.Margin = new System.Windows.Forms.Padding(6);
             this.Pd_addBtn.Name = "Pd_addBtn";
             this.Pd_addBtn.Size = new System.Drawing.Size(126, 78);
             this.Pd_addBtn.TabIndex = 64;
@@ -93,7 +94,7 @@ namespace PickUp2U
             // Pd_price
             // 
             this.Pd_price.Location = new System.Drawing.Point(282, 170);
-            this.Pd_price.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Pd_price.Margin = new System.Windows.Forms.Padding(6);
             this.Pd_price.Name = "Pd_price";
             this.Pd_price.Size = new System.Drawing.Size(231, 35);
             this.Pd_price.TabIndex = 61;
@@ -111,7 +112,7 @@ namespace PickUp2U
             // Pd_name
             // 
             this.Pd_name.Location = new System.Drawing.Point(282, 96);
-            this.Pd_name.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Pd_name.Margin = new System.Windows.Forms.Padding(6);
             this.Pd_name.Name = "Pd_name";
             this.Pd_name.Size = new System.Drawing.Size(231, 35);
             this.Pd_name.TabIndex = 59;
@@ -129,7 +130,7 @@ namespace PickUp2U
             // Pd_stock
             // 
             this.Pd_stock.Location = new System.Drawing.Point(282, 246);
-            this.Pd_stock.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Pd_stock.Margin = new System.Windows.Forms.Padding(6);
             this.Pd_stock.Name = "Pd_stock";
             this.Pd_stock.Size = new System.Drawing.Size(231, 35);
             this.Pd_stock.TabIndex = 63;
@@ -157,7 +158,7 @@ namespace PickUp2U
             // Pd_id
             // 
             this.Pd_id.Location = new System.Drawing.Point(184, 766);
-            this.Pd_id.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Pd_id.Margin = new System.Windows.Forms.Padding(6);
             this.Pd_id.Name = "Pd_id";
             this.Pd_id.Size = new System.Drawing.Size(197, 35);
             this.Pd_id.TabIndex = 63;
@@ -175,7 +176,7 @@ namespace PickUp2U
             // pd_shop
             // 
             this.pd_shop.Location = new System.Drawing.Point(282, 28);
-            this.pd_shop.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pd_shop.Margin = new System.Windows.Forms.Padding(6);
             this.pd_shop.Name = "pd_shop";
             this.pd_shop.Size = new System.Drawing.Size(231, 35);
             this.pd_shop.TabIndex = 59;
@@ -199,7 +200,7 @@ namespace PickUp2U
             this.Controls.Add(this.label2);
             this.Controls.Add(this.Pd_name);
             this.Controls.Add(this.label3);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Productform";
             this.Text = "Productform";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

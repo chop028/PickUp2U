@@ -18,7 +18,6 @@ namespace PickUp2U
             InitializeComponent();
         }
 
-
         private void button1_Click(object sender, EventArgs e)
         {
             if (!button2.Enabled)

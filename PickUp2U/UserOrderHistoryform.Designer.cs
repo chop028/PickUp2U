@@ -37,32 +37,36 @@ namespace PickUp2U
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(36, 110);
+            this.label1.Location = new System.Drawing.Point(67, 220);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 12);
+            this.label1.Size = new System.Drawing.Size(138, 24);
             this.label1.TabIndex = 3;
             this.label1.Text = "주문 리스트";
             // 
             // dataGridViewUserHistory
             // 
             this.dataGridViewUserHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewUserHistory.Location = new System.Drawing.Point(38, 140);
+            this.dataGridViewUserHistory.Location = new System.Drawing.Point(71, 280);
+            this.dataGridViewUserHistory.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.dataGridViewUserHistory.Name = "dataGridViewUserHistory";
             this.dataGridViewUserHistory.RowHeadersWidth = 82;
             this.dataGridViewUserHistory.RowTemplate.Height = 23;
-            this.dataGridViewUserHistory.Size = new System.Drawing.Size(648, 119);
+            this.dataGridViewUserHistory.Size = new System.Drawing.Size(1203, 238);
             this.dataGridViewUserHistory.TabIndex = 2;
             this.dataGridViewUserHistory.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUserHistory_CellClick);
             // 
             // UserOrderHistoryform
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1486, 900);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridViewUserHistory);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "UserOrderHistoryform";
             this.Text = "UserOrderHistoryform";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUserHistory)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

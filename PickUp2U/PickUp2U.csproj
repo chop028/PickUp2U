@@ -52,12 +52,6 @@
   <ItemGroup>
     <Compile Include="DBClass.cs" />
     <Compile Include="DBClass_user.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Loginform.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,12 +87,6 @@
     </Compile>
     <Compile Include="OwnerShopform.Designer.cs">
       <DependentUpon>OwnerShopform.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Paymentform.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Paymentform.Designer.cs">
-      <DependentUpon>Paymentform.cs</DependentUpon>
     </Compile>
     <Compile Include="Productform.cs">
       <SubType>Form</SubType>
@@ -169,9 +157,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="OwnerShopform.resx">
       <DependentUpon>OwnerShopform.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Paymentform.resx">
-      <DependentUpon>Paymentform.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Productform.resx">
       <DependentUpon>Productform.cs</DependentUpon>

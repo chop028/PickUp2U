@@ -41,7 +41,7 @@ namespace PickUp2U
             this.groupBox1.Controls.Add(this.OrderView);
             this.groupBox1.Location = new System.Drawing.Point(48, 55);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1027, 506);
+            this.groupBox1.Size = new System.Drawing.Size(1311, 506);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "주문 접수";
@@ -53,23 +53,24 @@ namespace PickUp2U
             this.OrderView.Name = "OrderView";
             this.OrderView.RowHeadersWidth = 82;
             this.OrderView.RowTemplate.Height = 37;
-            this.OrderView.Size = new System.Drawing.Size(972, 426);
+            this.OrderView.Size = new System.Drawing.Size(1248, 426);
             this.OrderView.TabIndex = 3;
             // 
             // BtnOderView
             // 
-            this.BtnOderView.Location = new System.Drawing.Point(438, 581);
+            this.BtnOderView.Location = new System.Drawing.Point(576, 579);
             this.BtnOderView.Name = "BtnOderView";
             this.BtnOderView.Size = new System.Drawing.Size(250, 70);
             this.BtnOderView.TabIndex = 4;
             this.BtnOderView.Text = "주문 보기";
             this.BtnOderView.UseVisualStyleBackColor = true;
+            this.BtnOderView.Click += new System.EventHandler(this.BtnOrderView_Click);
             // 
             // OrderListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1140, 692);
+            this.ClientSize = new System.Drawing.Size(1564, 692);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.BtnOderView);
             this.Name = "OrderListForm";
