@@ -48,8 +48,6 @@ namespace PickUp2U
                           "JOIN USERS U ON S.USER_ID = U.USER_ID " +
                           "WHERE U.USER_TYPE = 1 AND U.USER_ID = " + userId; ;
 
-                    Console.WriteLine("실행할 쿼리: " + selectShopsQuery); // 이 부분을 추가
-
                     OracleCommand selectShopsCommand = new OracleCommand(selectShopsQuery, connection);
                     selectShopsCommand.Parameters.Add(":UserID", OracleDbType.Int32).Value = userId;
 

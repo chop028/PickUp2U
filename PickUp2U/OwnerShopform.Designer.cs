@@ -74,6 +74,7 @@ namespace PickUp2U
             this.Controls.Add(this.groupBox1);
             this.Name = "OwnerShopform";
             this.Text = "OwnerShopform";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
