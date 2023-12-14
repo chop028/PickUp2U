@@ -56,7 +56,7 @@ namespace PickUp2U
                             if (userType == 0)
                             {
                                 MainUserform.userId = userId;
-                                MessageBox.Show("[0] 환영합니다.\n 회원번호 = " +userId);
+                                MessageBox.Show("[0] 환영합니다.\n 회원번호 = " + userId);
                                 MainUserform userForm = new MainUserform(userId);
                                 OrderDetailform orderDetailForm = new OrderDetailform(userId);
 
