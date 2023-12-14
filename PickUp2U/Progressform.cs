@@ -8,94 +8,185 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Oracle.DataAccess.Client;
 
 namespace PickUp2U
 {
     public partial class Progressform : Form
     {
-        private string ExpectedTime;
-        private string Status;
-        private DateTime ProductInProgressTime;
-        private DateTime PickupWaitingTime;
-        private DateTime PickupCompleteTime;
-        public Progressform(string expectedTime, string status, DateTime inProgressTime, DateTime waitingTime, DateTime completeTime)
+        private int paymentId;
+        private int expectedTimeInMinutes; // 분 단위의 예상 시간을 저장하는 변수
+        private int expectedTimeInSeconds;
+        private Timer updateTimer; // System.Windows.Forms.Timer 타이머 선언
+        private DateTime endDate;
+        public static Progressform GetInstance(int selectedOrderId)
+        {
+            Progressform progressform = new Progressform(selectedOrderId);
+            return progressform;
+        }
+
+        private Progressform(int selectedOrderId)
         {
             InitializeComponent();
-            ExpectedTime = expectedTime; // 예상 준비시간
-            Status = status; // 상태 정보
-            ProductInProgressTime = inProgressTime; // 상품 준비중 시간
-            PickupWaitingTime = waitingTime; // 픽업 대기중 시간
-            PickupCompleteTime = completeTime; // 픽업 완료 시간
-            InitializeUI(); // 사용자 인터페이스 초기화
-
+            GetProgressInformation(selectedOrderId);
+            StartTimer();
         }
-        private void InitializeUI()
+
+        private void StartTimer()
         {
-            // 1. 남은 시간을 표시하는 Label 추가
-            timer1.Interval = 1000; // 1초마다 갱신
-            timer1.Tick += timer1_Tick;
-            timer1.Start();
+            updateTimer = new Timer();
+            updateTimer.Interval = 1000; // 1초마다 업데이트
+            updateTimer.Tick += new EventHandler(timer_Tick);
+            updateTimer.Start();
+        }
 
-            // 2. RadioButton의 상태에 따라 상태 정보를 받아와 Progress Bar를 설정
-            SetProgressBar();
-
-            // 3. 각 상태별 시간을 보여주는 Label 추가
-            lblInProgressTime.Text = ProductInProgressTime != DateTime.MinValue ? "상품준비: " + ProductInProgressTime.ToString() : "상품준비: ";
-            lblWaitingTime.Text = PickupWaitingTime != DateTime.MinValue ? "픽업대기: " + PickupWaitingTime.ToString() : "픽업대기: ";
-            lblCompleteTime.Text = PickupCompleteTime != DateTime.MinValue ? "픽업완료: " + PickupCompleteTime.ToString() : "픽업완료: ";
-        } 
-
-        private void SetProgressBar()
+        private void timer_Tick(object sender, EventArgs e)
         {
-            // RadioButton의 상태에 따라 Progress Bar 설정
-            switch (Status)
+            if (expectedTimeInMinutes > 0)
             {
-                case "상품 준비중":
-                    progressBar.Value = 33;
-                    break;
-                case "픽업 대기중":
-                    progressBar.Value = 66;
-                    break;
-                case "픽업 완료":
-                    progressBar.Value = 100;
-                    break;
-                default:
-                    progressBar.Value = 0;
-                    break;
+                expectedTimeInSeconds--;
+                UpdateRemainingTime();
+            }
+            else
+            {
+                updateTimer.Stop(); // 시간이 0이 되면 타이머 중지
+                lblRemainingTime.Text = "00:00";
             }
         }
 
-       
-
-        private void timer1_Tick(object sender, EventArgs e)
+        private void GetProgressInformation(int selectedOrderId)
         {
-            if (!string.IsNullOrEmpty(ExpectedTime))
+            string connectionString = "User Id=admin; Password=admin; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = xe)))";
+
+            try
             {
-                DateTime expectedDateTime;
-                if (DateTime.TryParseExact(ExpectedTime, "yyyyMMddHHmmss", CultureInfo.InvariantCulture, DateTimeStyles.None, out expectedDateTime))
+                using (OracleConnection connection = new OracleConnection(connectionString))
                 {
-                    if (expectedDateTime > DateTime.Now)
-                    {
-                        TimeSpan remainingTime = expectedDateTime - DateTime.Now;
+                    connection.Open();
 
-                        // 남은 시간을 분 단위로 계산하여 출력 (소수점 자리 제거)
-                        int remainingMinutes = (int)Math.Round(remainingTime.TotalMinutes);
-                        //lblRemainingTime.Text = "남은시간: 약 " + "$"{remainingMinutes} 분";
+                    string selectQuery = $"SELECT PICKUP_PROGRESS.EXPECTED_TIME, PICKUP_PROGRESS.START_DATE, PICKUP_PROGRESS.END_DATE, PICKUP_PROGRESS.PICKUP_DATE " +
+                                         $"FROM PICKUP_PROGRESS " +
+                                         $"INNER JOIN PAYMENTS ON PICKUP_PROGRESS.PAYMENT_ID = PAYMENTS.PAYMENT_ID " +
+                                         $"WHERE PAYMENTS.ORDER_ID = {selectedOrderId}";
 
-                    }
-                    else
+                    OracleCommand command = new OracleCommand(selectQuery, connection);
+                    OracleDataReader reader = command.ExecuteReader();
+
+                    if (reader.Read())
                     {
-                        lblRemainingTime.Text = "Time's up!";
-                        timer1.Stop(); // 타이머 정지
+                        expectedTimeInMinutes = Convert.ToInt32(reader["EXPECTED_TIME"]); // DB에서 가져온 분 단위의 값
+
+                        // START_DATE 값이 NULL인 경우 처리
+                        object start_date = reader["START_DATE"];
+                        if (start_date == DBNull.Value || Convert.ToDateTime(start_date) == DateTime.MinValue)
+                        {
+                            lblInProgressTime.Text = "상품준비: "; // 혹은 원하는 디폴트 텍스트 설정
+                        }
+                        else
+                        {
+                            lblInProgressTime.Text = "상품준비: " + Convert.ToDateTime(start_date).ToString();
+                        }
+
+                        // PICKUP_DATE 값이 NULL이거나 0001-01-01 00:00:00인 경우 처리
+                        object pickup_date = reader["PICKUP_DATE"];
+                        if (pickup_date == DBNull.Value || Convert.ToDateTime(pickup_date) == DateTime.MinValue)
+                        {
+                            lblWaitingTime.Text = "준비완료: "; // 혹은 원하는 디폴트 텍스트 설정
+                        }
+                        else
+                        {
+                            lblWaitingTime.Text = "준비완료: " + Convert.ToDateTime(pickup_date).ToString();
+                        }
+
+                        // END_DATE 값이 NULL이거나 0001-01-01 00:00:00인 경우 처리
+                        object end_date = reader["END_DATE"];
+                        if (end_date == DBNull.Value || Convert.ToDateTime(end_date) == DateTime.MinValue)
+                        {
+                            lblCompleteTime.Text = "픽업완료: "; // 혹은 원하는 디폴트 텍스트 설정
+                        }
+                        else
+                        {
+                            lblCompleteTime.Text = "픽업완료: " + Convert.ToDateTime(end_date).ToString();
+                        }
+
+
+                        // 현재 시간을 가져옵니다.
+                        DateTime currentTime = DateTime.Now;
+
+                        // START_DATE부터 현재 시간까지의 차이를 계산하여 초 단위로 설정합니다.
+                        DateTime startDate = Convert.ToDateTime(reader["START_DATE"]);
+                        TimeSpan timeDifference = currentTime - startDate;
+                        expectedTimeInSeconds = expectedTimeInMinutes * 60 - (int)timeDifference.TotalSeconds;
+                        endDate = (reader["END_DATE"] != DBNull.Value) ? Convert.ToDateTime(reader["END_DATE"]) : DateTime.MinValue;
+                        // 타이머 시작
+                        StartTimer();
+
+                        string shopQuery = $"SELECT SHOP_NAME, SHOP_LOCATION FROM SHOPS WHERE SHOP_ID IN (SELECT SHOP_ID FROM SHOP_PRODUCTS WHERE PRODUCT_ID IN (SELECT PRODUCT_ID FROM ORDERS WHERE ORDER_ID = {selectedOrderId}))";
+
+                        OracleCommand shopCommand = new OracleCommand(shopQuery, connection);
+                        OracleDataReader shopReader = shopCommand.ExecuteReader();
+
+                        if (shopReader.Read())
+                        {
+                            // 상점 정보 레이블에 출력
+                            string shopName = Convert.ToString(shopReader["SHOP_NAME"]);
+                            string shopLocation = Convert.ToString(shopReader["SHOP_LOCATION"]);
+
+                            shoplable.Text = $"매장명: {shopName}"; // 여기서 '매장명' 레이블은 SHOP_NAME으로 변경됩니다.
+                            locationlable.Text = $"매장위치: {shopLocation}";
+                        }
+
+                        // 나머지 코드는 변경되지 않았습니다.
                     }
-                }
-                else
-                {
-                    // 유효한 DateTime으로 변환할 수 없는 경우에 대한 처리
-                    lblRemainingTime.Text = "Invalid DateTime";
-                    timer1.Stop(); // 타이머 정지
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("데이터를 가져오는 중 오류가 발생했습니다: " + ex.Message);
+            }
+        }
+        private void UpdateProgressBar()
+        {
+            if (endDate != DateTime.MinValue)
+            {
+                progressBar.Value = 100;
+                return;
+            }
+
+            int totalTime = expectedTimeInMinutes * 60;
+            int remainingTime = expectedTimeInSeconds;
+
+            if (remainingTime <= 0)
+            {
+                progressBar.Value = 100;
+                return;
+            }
+
+            // 역으로 계산하여 ProgressBar 값을 조정합니다.
+            double ratio = 1.0 - ((double)remainingTime / totalTime);
+            int progressValue = (int)(ratio * 100);
+
+            progressBar.Value = progressValue;
+        }
+
+
+
+        private void UpdateRemainingTime()
+        {
+           
+            int remainingMinutes = expectedTimeInSeconds/ 60; // 초를 분 단위로 변환
+            if (remainingMinutes < 0)
+            {
+                remainingMinutes = 0; // 음수일 경우 0으로 설정
+            }
+
+            lblRemainingTime.Text = "남은시간: " + remainingMinutes.ToString() + "분";
+            UpdateProgressBar();
+        }
+
+        private void Progressform_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
