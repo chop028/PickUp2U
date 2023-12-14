@@ -22,8 +22,8 @@ namespace PickUp2U
         {
             if (!button2.Enabled)
             {
-                if (!(radioButton1.Checked && !string.IsNullOrWhiteSpace(rgId.Text) && !string.IsNullOrWhiteSpace(rgPw.Text) &&!string.IsNullOrWhiteSpace(rgName.Text) && !string.IsNullOrWhiteSpace(rgPhone.Text) && !string.IsNullOrWhiteSpace(rgMail.Text)))
-                        {
+                if (!(radioButton1.Checked && !string.IsNullOrWhiteSpace(rgId.Text) && !string.IsNullOrWhiteSpace(rgPw.Text) && !string.IsNullOrWhiteSpace(rgName.Text) && !string.IsNullOrWhiteSpace(rgPhone.Text) && !string.IsNullOrWhiteSpace(rgMail.Text)))
+                {
                     MessageBox.Show("모든 정보를 입력하세요.");
                     return;
                 }
