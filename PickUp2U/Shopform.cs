@@ -184,7 +184,8 @@ namespace PickUp2U
 
             if (rows.Length > 0)
             {
-                int userFromData;
+                int userFromData;   
+                    
                 if (int.TryParse(rows[0]["USER_ID"].ToString(), out userFromData) && userFromData == userId)
                 {
                     rows[0]["SHOP_NAME"] = txtid.Text;

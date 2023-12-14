@@ -147,6 +147,7 @@ namespace PickUp2U
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "업주";
             this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // button1
             // 

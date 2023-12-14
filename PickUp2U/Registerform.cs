@@ -18,15 +18,38 @@ namespace PickUp2U
             InitializeComponent();
         }
 
+        
         private void button1_Click(object sender, EventArgs e)
         {
             if (!button2.Enabled)
             {
-                if (!(radioButton1.Checked && !string.IsNullOrWhiteSpace(rgId.Text) && !string.IsNullOrWhiteSpace(rgPw.Text) && !string.IsNullOrWhiteSpace(rgName.Text) && !string.IsNullOrWhiteSpace(rgPhone.Text) && !string.IsNullOrWhiteSpace(rgMail.Text)))
+                if (!radioButton1.Checked && !radioButton2.Checked || string.IsNullOrWhiteSpace(rgId.Text) || string.IsNullOrWhiteSpace(rgPw.Text) || string.IsNullOrWhiteSpace(rgName.Text) || string.IsNullOrWhiteSpace(rgPhone.Text) || string.IsNullOrWhiteSpace(rgMail.Text))
                 {
-                    MessageBox.Show("모든 정보를 입력하세요.");
+                    string missingFields = "";
+
+                    if (string.IsNullOrWhiteSpace(rgId.Text))
+                        missingFields += "[아이디]";
+
+                    if (string.IsNullOrWhiteSpace(rgPw.Text))
+                        missingFields += "[비밀번호]";
+
+                    if (string.IsNullOrWhiteSpace(rgName.Text))
+                        missingFields += "[이름]";
+
+                    if (string.IsNullOrWhiteSpace(rgPhone.Text))
+                        missingFields += "[전화번호]";
+
+                    if (string.IsNullOrWhiteSpace(rgMail.Text))
+                        missingFields += "[이메일]";
+
+                    if (!radioButton1.Checked)
+                        missingFields += "[사용자 구분]";
+
+
+                    MessageBox.Show($"{missingFields}를 입력하세요.");
                     return;
                 }
+
 
 
                 string connectionString = "User Id=admin; Password=admin; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = xe)) )";
@@ -102,6 +125,7 @@ namespace PickUp2U
                     }
                     button2.Text = "확인";
                     button2.Enabled = false;
+                    rgId.ReadOnly = true;
                 }
                 catch (Exception ex)
                 {
@@ -110,6 +134,9 @@ namespace PickUp2U
             }
         }
 
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }
