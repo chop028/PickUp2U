@@ -13,6 +13,8 @@ namespace PickUp2U
 {
     public partial class ProgressSettingform : Form
     {
+        public event EventHandler ProgressSettingCompleted;
+
         private static ProgressSettingform instance;
         private int paymentId;
         public static ProgressSettingform GetInstance(int orderId)
@@ -130,17 +132,30 @@ namespace PickUp2U
 
                 // Form1을 숨기고 ProgressForm을 보여줌
                 this.Hide();
-                // ShopOrderHistoryform으로 돌아가는 코드 추가
-                ShopOrderHistoryform shopOrderHistoryform = new ShopOrderHistoryform();
-                shopOrderHistoryform.Show();
+                MainOwnerform mainOwnerForm = Application.OpenForms.OfType<MainOwnerform>().FirstOrDefault();
+                if (mainOwnerForm != null)
+                {
+                    // 열려있는 ShopOrderHistoryform의 데이터 업데이트
+                    ShopOrderHistoryform shopOrderHistoryform = mainOwnerForm.Controls.Find("shopOrderHistory", true).FirstOrDefault() as ShopOrderHistoryform;
+                    if (shopOrderHistoryform != null)
+                    {
+                        shopOrderHistoryform.UpdateOrderHistory(); // ShopOrderHistoryform에서 업데이트하는 메서드 호출
+                    }
+                }
+
+                // ProgressSettingCompleted 이벤트 호출
+                OnProgressSettingCompleted();
             }
             else
             {
-                MessageBox.Show("올바른 시간 형식을 입력하세요."); // 유효하지 않은 값에 대한 메시지 출력
+                MessageBox.Show("올바른 시간 형식을 입력하세요.");
             }
         }
 
-
+        protected virtual void OnProgressSettingCompleted()
+        {
+            ProgressSettingCompleted?.Invoke(this, EventArgs.Empty);
+        }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {

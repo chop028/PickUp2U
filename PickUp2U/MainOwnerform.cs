@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
+using System.Drawing;   
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +24,7 @@ namespace PickUp2U
         private void 매장등록ToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+            Shopform.userId = userId;
             shop = new Shopform();
             shop.MdiParent = this;
             shop.Show();
@@ -37,7 +38,7 @@ namespace PickUp2U
 
             product = new Productform();
             product.MdiParent = this;
-            product.Show();
+            product .Show();  
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
@@ -54,24 +55,29 @@ namespace PickUp2U
             OwnerShop.MdiParent = this;
             OwnerShop.Show();
         }
+        ShopOrderHistoryform shopOrderHistory;
         private void 픽업관리ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
-            ShopOrderHistoryform shopOrderHistoryform = new ShopOrderHistoryform();
-            shopOrderHistoryform.Show();
+         
+
+            shopOrderHistory = new ShopOrderHistoryform();
+            shopOrderHistory.MdiParent = this;
+            shopOrderHistory.Show();
         }
 
         private void 상품조회ToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
-
+        OrderListform orderList;
         private void 주문조회ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
-            OrderListform orderListform = new OrderListform();
-            orderListform.Show();
+            orderList = new OrderListform();
+            orderList.MdiParent = this;
+            orderList.Show();
 
+           
         }
     }
+
 }

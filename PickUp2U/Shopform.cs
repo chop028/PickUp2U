@@ -13,6 +13,8 @@ namespace PickUp2U
 {
     public partial class Shopform : Form
     {
+
+        public static int userId;
         DBClass dbc;
         public Shopform()
         {
@@ -20,6 +22,8 @@ namespace PickUp2U
             dbc = new DBClass();
 
             dbc.DB_Open();
+
+            txt_userid.Text = userId.ToString();
 
             DataView dv = dbc.PhoneTable.DefaultView;
             dv.RowFilter = "SHOP_STATUS = 0";
@@ -91,7 +95,8 @@ namespace PickUp2U
 
                 DataRow newRow = dbc.PhoneTable.NewRow();
                 newRow["SHOP_ID"] = newShopId.ToString();
-                newRow["PRODUCT_ID"] = DBNull.Value; // NULL
+                newRow["USER_ID"] = userId; 
+                newRow["PRODUCT_ID"] = DBNull.Value; 
                 newRow["SHOP_NAME"] = shopName;
                 newRow["SHOP_TELEPHONE"] = shopNumber;
                 newRow["SHOP_LOCATION"] = shopLocation;
