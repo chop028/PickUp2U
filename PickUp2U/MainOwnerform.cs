@@ -24,6 +24,7 @@ namespace PickUp2U
         private void 매장등록ToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+            Shopform.userId = userId;
             shop = new Shopform();
             shop.MdiParent = this;
             shop.Show();
