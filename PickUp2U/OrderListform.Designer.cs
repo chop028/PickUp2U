@@ -31,7 +31,6 @@ namespace PickUp2U
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.OrderView = new System.Windows.Forms.DataGridView();
-            this.BtnPickupReady = new System.Windows.Forms.Button();
             this.BtnOderView = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OrderView)).BeginInit();
@@ -57,24 +56,14 @@ namespace PickUp2U
             this.OrderView.Size = new System.Drawing.Size(972, 426);
             this.OrderView.TabIndex = 3;
             // 
-            // BtnPickupReady
-            // 
-            this.BtnPickupReady.Location = new System.Drawing.Point(237, 579);
-            this.BtnPickupReady.Name = "BtnPickupReady";
-            this.BtnPickupReady.Size = new System.Drawing.Size(250, 70);
-            this.BtnPickupReady.TabIndex = 4;
-            this.BtnPickupReady.Text = "픽업 준비";
-            this.BtnPickupReady.UseVisualStyleBackColor = true;
-            // 
             // BtnOderView
             // 
-            this.BtnOderView.Location = new System.Drawing.Point(667, 579);
+            this.BtnOderView.Location = new System.Drawing.Point(438, 581);
             this.BtnOderView.Name = "BtnOderView";
             this.BtnOderView.Size = new System.Drawing.Size(250, 70);
             this.BtnOderView.TabIndex = 4;
             this.BtnOderView.Text = "주문 보기";
             this.BtnOderView.UseVisualStyleBackColor = true;
-            this.BtnOderView.Click += new System.EventHandler(this.BtnOrderView_Click);
             // 
             // OrderListForm
             // 
@@ -83,9 +72,9 @@ namespace PickUp2U
             this.ClientSize = new System.Drawing.Size(1140, 692);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.BtnOderView);
-            this.Controls.Add(this.BtnPickupReady);
             this.Name = "OrderListForm";
             this.Text = "OrderListform";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.OrderView)).EndInit();
             this.ResumeLayout(false);
@@ -96,7 +85,6 @@ namespace PickUp2U
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView OrderView;
-        private System.Windows.Forms.Button BtnPickupReady;
         private System.Windows.Forms.Button BtnOderView;
     }
 }

@@ -58,8 +58,6 @@ namespace PickUp2U
         ShopOrderHistoryform shopOrderHistory;
         private void 픽업관리ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-         
-
             shopOrderHistory = new ShopOrderHistoryform();
             shopOrderHistory.MdiParent = this;
             shopOrderHistory.Show();
@@ -69,14 +67,12 @@ namespace PickUp2U
         {
 
         }
-        OrderListform orderList;
+        OrderListForm orderList;
         private void 주문조회ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            orderList = new OrderListform();
+            orderList = new OrderListForm();
             orderList.MdiParent = this;
-            orderList.Show();
-
-           
+            orderList.Show();  
         }
     }
 

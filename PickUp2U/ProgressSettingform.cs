@@ -101,7 +101,7 @@ namespace PickUp2U
         }
 
         private void btnComplete_Click(object sender, EventArgs e)
-{
+        {
             if (int.TryParse(txtExpectedTime.Text, out int expectedMinutes))
             {
                 ExpectedTime = expectedMinutes.ToString();
