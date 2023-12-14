@@ -17,7 +17,7 @@ namespace PickUp2U
         private void InitializeListView()
         {
             listViewOwnerShops.View = View.Details;
-            listViewOwnerShops.Columns.Add("매장ID", 80);
+            listViewOwnerShops.Columns.Add("매장ID", 60);
             listViewOwnerShops.Columns.Add("매장명", 150);
             listViewOwnerShops.Columns.Add("전화번호", 120);
             listViewOwnerShops.Columns.Add("매장주소", 200);
