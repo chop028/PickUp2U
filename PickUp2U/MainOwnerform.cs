@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
+using System.Drawing;   
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,7 +37,7 @@ namespace PickUp2U
 
             product = new Productform();
             product.MdiParent = this;
-            product.Show();
+            product .Show();  
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
