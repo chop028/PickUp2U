@@ -51,7 +51,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DBClass.cs" />
-    <Compile Include="DBClassOD.cs" />
     <Compile Include="DBClass_user.cs" />
     <Compile Include="Loginform.cs">
       <SubType>Form</SubType>
@@ -161,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="OrderListform.resx">
       <DependentUpon>OrderListform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OwnerShopform.resx">
+      <DependentUpon>OwnerShopform.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Paymentform.resx">
       <DependentUpon>Paymentform.cs</DependentUpon>

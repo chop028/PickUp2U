@@ -48,11 +48,9 @@ namespace PickUp2U
         }
 
         OwnerShopform OwnerShop;
-
         private void 보유매장조회ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-            OwnerShop = new OwnerShopform();
+            OwnerShop = new OwnerShopform(userId);
             OwnerShop.MdiParent = this;
             OwnerShop.Show();
         }
