@@ -23,7 +23,6 @@ namespace PickUp2U
 
             dbc.DB_Open();
 
-            txt_userid.Text = userId.ToString();
 
             DataView dv = dbc.PhoneTable.DefaultView;
             dv.RowFilter = "SHOP_STATUS = 0";
