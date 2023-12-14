@@ -108,11 +108,7 @@ namespace PickUp2U
             // 보유매장조회ToolStripMenuItem
             // 
             this.보유매장조회ToolStripMenuItem.Name = "보유매장조회ToolStripMenuItem";
-<<<<<<< HEAD
             this.보유매장조회ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-=======
-            this.보유매장조회ToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
->>>>>>> a7148f9b4085a33afe6e7cd5e4f7c13827f604cf
             this.보유매장조회ToolStripMenuItem.Text = "보유 매장 조회";
             this.보유매장조회ToolStripMenuItem.Click += new System.EventHandler(this.보유매장조회ToolStripMenuItem_Click);
             // 

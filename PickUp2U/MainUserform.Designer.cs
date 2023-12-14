@@ -94,7 +94,7 @@ namespace PickUp2U
             // btnLogout
             // 
             this.btnLogout.Location = new System.Drawing.Point(493, 0);
-            this.btnLogout.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLogout.Margin = new System.Windows.Forms.Padding(2);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(69, 22);
             this.btnLogout.TabIndex = 7;
