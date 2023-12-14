@@ -94,7 +94,8 @@ namespace PickUp2U
 
                 DataRow newRow = dbc.PhoneTable.NewRow();
                 newRow["SHOP_ID"] = newShopId.ToString();
-                newRow["USER_ID"] = userId; 
+                newRow["USER_ID"] = userId;
+
                 newRow["SHOP_NAME"] = shopName;
                 newRow["SHOP_TELEPHONE"] = shopNumber;
                 newRow["SHOP_LOCATION"] = shopLocation;
