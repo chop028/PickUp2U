@@ -64,10 +64,13 @@ namespace PickUp2U
                 {
                     connection.Open();
 
-                    string selectQuery = $"SELECT PICKUP_PROGRESS.EXPECTED_TIME, PICKUP_PROGRESS.START_DATE, PICKUP_PROGRESS.END_DATE, PICKUP_PROGRESS.PICKUP_DATE " +
-                                         $"FROM PICKUP_PROGRESS " +
-                                         $"INNER JOIN PAYMENTS ON PICKUP_PROGRESS.PAYMENT_ID = PAYMENTS.PAYMENT_ID " +
-                                         $"WHERE PAYMENTS.ORDER_ID = {selectedOrderId}";
+                    string selectQuery = $"SELECT PICKUP_PROGRESS.EXPECTED_TIME, PICKUP_PROGRESS.START_DATE, PICKUP_PROGRESS.END_DATE, PICKUP_PROGRESS.PICKUP_DATE, " +
+                                 $"SHOPS.SHOP_NAME, SHOPS.SHOP_LOCATION " +
+                                 $"FROM PICKUP_PROGRESS " +
+                                 $"INNER JOIN PAYMENTS ON PICKUP_PROGRESS.PAYMENT_ID = PAYMENTS.PAYMENT_ID " +
+                                 $"INNER JOIN ORDERS ON PAYMENTS.ORDER_ID = ORDERS.ORDER_ID " +
+                                 $"INNER JOIN SHOPS ON ORDERS.SHOP_ID = SHOPS.SHOP_ID " +
+                                 $"WHERE ORDERS.ORDER_ID = {selectedOrderId}";
 
                     OracleCommand command = new OracleCommand(selectQuery, connection);
                     OracleDataReader reader = command.ExecuteReader();
@@ -108,7 +111,11 @@ namespace PickUp2U
                         {
                             lblCompleteTime.Text = "픽업완료: " + Convert.ToDateTime(end_date).ToString();
                         }
+                        string shopName = Convert.ToString(reader["SHOP_NAME"]);
+                        string shopLocation = Convert.ToString(reader["SHOP_LOCATION"]);
 
+                        shoplable.Text = $"매장명: {shopName}";
+                        locationlable.Text = $"매장위치: {shopLocation}";
 
                         // 현재 시간을 가져옵니다.
                         DateTime currentTime = DateTime.Now;
@@ -121,20 +128,9 @@ namespace PickUp2U
                         // 타이머 시작
                         StartTimer();
 
-                        string shopQuery = $"SELECT SHOP_NAME, SHOP_LOCATION FROM SHOPS WHERE SHOP_ID IN (SELECT SHOP_ID FROM SHOP_PRODUCTS WHERE PRODUCT_ID IN (SELECT PRODUCT_ID FROM ORDERS WHERE ORDER_ID = {selectedOrderId}))";
+                        
 
-                        OracleCommand shopCommand = new OracleCommand(shopQuery, connection);
-                        OracleDataReader shopReader = shopCommand.ExecuteReader();
-
-                        if (shopReader.Read())
-                        {
-                            // 상점 정보 레이블에 출력
-                            string shopName = Convert.ToString(shopReader["SHOP_NAME"]);
-                            string shopLocation = Convert.ToString(shopReader["SHOP_LOCATION"]);
-
-                            shoplable.Text = $"매장명: {shopName}"; // 여기서 '매장명' 레이블은 SHOP_NAME으로 변경됩니다.
-                            locationlable.Text = $"매장위치: {shopLocation}";
-                        }
+                       
 
                         // 나머지 코드는 변경되지 않았습니다.
                     }

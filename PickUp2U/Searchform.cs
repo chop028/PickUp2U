@@ -47,7 +47,7 @@ namespace PickUp2U
                 shop_num.Text = sc_item.Text;
 
                 string connectionString = "User Id=admin; Password=admin; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = xe)))";
-                string query = $"SELECT PRODUCT_ID FROM SHOPS WHERE SHOP_ID = '{shopId}'";
+                string query = $"SELECT PRODUCT_ID FROM SHOP_PRODUCTS WHERE SHOP_ID = '{shopId}'";
 
 
                 OracleDataAdapter adapter = new OracleDataAdapter(query, connectionString);
@@ -185,8 +185,8 @@ namespace PickUp2U
                         }
 
                         sc_total.Text = "총 상품 가격 :" + totalPriceC.ToString();
-                        discount.Text = "- 할인 금액 :" + (totalPriceC * GetMembershipId()).ToString();
-                        total_amount.Text = "총 결제 금액 :" + (totalPriceC - (totalPriceC * GetMembershipId())).ToString();
+                        discount.Text = "- 할인 금액 :" + (totalPriceC * GetMembershipId()).ToString("N0");
+                        total_amount.Text = "총 결제 금액 :" + (totalPriceC - (totalPriceC * GetMembershipId())).ToString("N0");
 
                     }
                 }
@@ -249,10 +249,10 @@ namespace PickUp2U
                                     productOrderId = Convert.ToInt32(productOrderIdResult) + 1;
                                 }
 
-                                inesrtPRODUCT_ORDERS(newOrderId,productOrderId);
+                                inesrtPRODUCT_ORDERS(newOrderId, productOrderId);
                                 /*             ORDERS 테이블 insert                     */
-                               
-                        }
+
+                            }
 
                         }
                     }
@@ -263,7 +263,7 @@ namespace PickUp2U
                 MessageBox.Show(ex.Message);
             }
         }
-   
+
 
         private void inesrtPRODUCT_ORDERS(int orderID, int productOrderID)
         {
@@ -301,30 +301,30 @@ namespace PickUp2U
                     {
                         int productRowsAffected = productInsertCommand.ExecuteNonQuery();
 
-                    
-                    /*
-                    if (productRowsAffected > 0)
-                    {
-                        MessageBox.Show($"주문 {productOrderID}가 완료되었습니다.");
-                    }
-                    else
-                    {
-                        MessageBox.Show($"주문 {productOrderID}에 실패했습니다.");
-                    }
-                    */
+
+                        /*
+                        if (productRowsAffected > 0)
+                        {
+                            MessageBox.Show($"주문 {productOrderID}가 완료되었습니다.");
+                        }
+                        else
+                        {
+                            MessageBox.Show($"주문 {productOrderID}에 실패했습니다.");
+                        }
+                        */
                     }
                 }
-                
+
                 string totalText = sc_total.Text;
                 string numericText = new string(totalText.Where(char.IsDigit).ToArray());
 
                 if (int.TryParse(numericText, out int totalP))
                 {
                     int DisCount = (int)(totalP * GetMembershipId());
-                    InsertPayment(orderID, totalP, 0, DisCount , totalP-DisCount);
+                    InsertPayment(orderID, totalP, 0, DisCount, totalP - DisCount);
                 }
-                
-             
+
+
             }
         }
 
@@ -377,38 +377,15 @@ namespace PickUp2U
 
         private void button1sa_Click(object sender, EventArgs e)
         {
-            try
-            {
-                string connectionString = "User Id=admin; Password=admin; Data Source=(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = localhost)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = xe)) )";
+            basket_arr.Clear();
+            basket_num_arr.Clear();
+            basket_price_arr.Clear();
 
-                using (var connection = new OracleConnection(connectionString))
-                {
-                    connection.Open();
+            sc_basket.Items.Clear();
 
-                    for (int i = 40025; i < 40027; i++)
-                    {
-                        string productInsertQuery = $"INSERT INTO PRODUCT_ORDERS (PRODUCT_ORDER_ID, ORDER_ID, PRODUCT_ID, ORDER_QUANTITY, ORDER_AMOUNT, TOTAL) VALUES ({i}, 30031, 10000, 3, 1800, 3600)";
-
-                        using (var productInsertCommand = new OracleCommand(productInsertQuery, connection))
-                        {
-                            int productRowsAffected = productInsertCommand.ExecuteNonQuery();
-
-                            if (productRowsAffected > 0)
-                            {
-                                MessageBox.Show($"주문 {i}가 완료되었습니다.");
-                            }
-                            else
-                            {
-                                MessageBox.Show($"주문 {i}에 실패했습니다.");
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            sc_total.Text = "총 금액 : ";
+            discount.Text = "- 할인 금액 : ";
+            total_amount.Text = "총 결제 금액 : ";
         }
 
         private double GetMembershipId()
@@ -467,6 +444,7 @@ namespace PickUp2U
 
                     string insertQuery = $"INSERT INTO PICKUP_PROGRESS (PAYMENT_ID, START_DATE, END_DATE, PICKUP_DATE) VALUES (:paymentId, NULL, NULL, NULL)";
 
+
                     using (var command = new OracleCommand(insertQuery, connection))
                     {
                         command.Parameters.Add(new OracleParameter("paymentId", OracleDbType.Int32)).Value = paymentId;
@@ -484,12 +462,13 @@ namespace PickUp2U
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("여기에요 우리" + ex.Message);
             }
         }
 
+        private void Searchform_Load(object sender, EventArgs e)
+        {
 
-
-
+        }
     }
 }

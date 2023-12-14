@@ -41,7 +41,6 @@ namespace PickUp2U
             this.DBGrid = new System.Windows.Forms.DataGridView();
             this.label7 = new System.Windows.Forms.Label();
             this.shop_id = new System.Windows.Forms.TextBox();
-            this.txt_userid = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DBGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -149,21 +148,11 @@ namespace PickUp2U
             this.shop_id.Size = new System.Drawing.Size(126, 21);
             this.shop_id.TabIndex = 37;
             // 
-            // txt_userid
-            // 
-            this.txt_userid.AutoSize = true;
-            this.txt_userid.Location = new System.Drawing.Point(304, 33);
-            this.txt_userid.Name = "txt_userid";
-            this.txt_userid.Size = new System.Drawing.Size(59, 12);
-            this.txt_userid.TabIndex = 45;
-            this.txt_userid.Text = "txt_userid";
-            // 
             // Shopform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(404, 458);
-            this.Controls.Add(this.txt_userid);
             this.Controls.Add(this.DBGrid);
             this.Controls.Add(this.Shop_DelBtn);
             this.Controls.Add(this.Shop_UdBtn);
@@ -200,6 +189,5 @@ namespace PickUp2U
         private System.Windows.Forms.DataGridView DBGrid;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox shop_id;
-        private System.Windows.Forms.Label txt_userid;
     }
 }
