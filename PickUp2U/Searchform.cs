@@ -249,10 +249,10 @@ namespace PickUp2U
                                     productOrderId = Convert.ToInt32(productOrderIdResult) + 1;
                                 }
 
-                                inesrtPRODUCT_ORDERS(newOrderId,productOrderId);
+                                inesrtPRODUCT_ORDERS(newOrderId, productOrderId);
                                 /*             ORDERS 테이블 insert                     */
-                               
-                        }
+
+                            }
 
                         }
                     }
@@ -263,7 +263,7 @@ namespace PickUp2U
                 MessageBox.Show(ex.Message);
             }
         }
-   
+
 
         private void inesrtPRODUCT_ORDERS(int orderID, int productOrderID)
         {
@@ -301,30 +301,30 @@ namespace PickUp2U
                     {
                         int productRowsAffected = productInsertCommand.ExecuteNonQuery();
 
-                    
-                    /*
-                    if (productRowsAffected > 0)
-                    {
-                        MessageBox.Show($"주문 {productOrderID}가 완료되었습니다.");
-                    }
-                    else
-                    {
-                        MessageBox.Show($"주문 {productOrderID}에 실패했습니다.");
-                    }
-                    */
+
+                        /*
+                        if (productRowsAffected > 0)
+                        {
+                            MessageBox.Show($"주문 {productOrderID}가 완료되었습니다.");
+                        }
+                        else
+                        {
+                            MessageBox.Show($"주문 {productOrderID}에 실패했습니다.");
+                        }
+                        */
                     }
                 }
-                
+
                 string totalText = sc_total.Text;
                 string numericText = new string(totalText.Where(char.IsDigit).ToArray());
 
                 if (int.TryParse(numericText, out int totalP))
                 {
                     int DisCount = (int)(totalP * GetMembershipId());
-                    InsertPayment(orderID, totalP, 0, DisCount , totalP-DisCount);
+                    InsertPayment(orderID, totalP, 0, DisCount, totalP - DisCount);
                 }
-                
-             
+
+
             }
         }
 
@@ -442,7 +442,8 @@ namespace PickUp2U
                 {
                     connection.Open();
 
-                    string insertQuery = $"INSERT INTO PICKUP_PROGRESS (PAYMENT_ID, START_DATE, END_DATE,e PICKUP_DATE) VALUES (:paymentId, NULL, NULL, NULL)";
+                    string insertQuery = $"INSERT INTO PICKUP_PROGRESS (PAYMENT_ID, START_DATE, END_DATE, PICKUP_DATE) VALUES (:paymentId, NULL, NULL, NULL)";
+
 
                     using (var command = new OracleCommand(insertQuery, connection))
                     {
@@ -461,7 +462,7 @@ namespace PickUp2U
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("여기에요 우리" + ex.Message);
             }
         }
 
