@@ -56,12 +56,12 @@ namespace PickUp2U
             // 
             // button1sa
             // 
-            this.button1sa.Location = new System.Drawing.Point(943, 37);
+            this.button1sa.Location = new System.Drawing.Point(901, 52);
             this.button1sa.Margin = new System.Windows.Forms.Padding(2);
             this.button1sa.Name = "button1sa";
-            this.button1sa.Size = new System.Drawing.Size(51, 20);
+            this.button1sa.Size = new System.Drawing.Size(69, 23);
             this.button1sa.TabIndex = 30;
-            this.button1sa.Text = "상품삭제";
+            this.button1sa.Text = "전체 삭제";
             this.button1sa.UseVisualStyleBackColor = true;
             this.button1sa.Click += new System.EventHandler(this.button1sa_Click);
             // 

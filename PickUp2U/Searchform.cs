@@ -442,8 +442,7 @@ namespace PickUp2U
                 {
                     connection.Open();
 
-                    string insertQuery = $"INSERT INTO PICKUP_PROGRESS (PAYMENT_ID, START_DATE, END_DATE, PICKUP_DATE) VALUES (:paymentId, NULL, NULL, NULL)";
-
+                    string insertQuery = $"INSERT INTO PICKUP_PROGRESS (PAYMENT_ID, EXPECTED_TIME, START_DATE, END_DATE, PICKUP_DATE) VALUES (:paymentId, NULL, NULL, NULL, NULL)";
 
                     using (var command = new OracleCommand(insertQuery, connection))
                     {
