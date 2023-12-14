@@ -184,22 +184,30 @@ namespace PickUp2U
 
             if (rows.Length > 0)
             {
-                rows[0]["SHOP_NAME"] = txtid.Text;
-                rows[0]["SHOP_TELEPHONE"] = txtNumber.Text;
-                rows[0]["SHOP_LOCATION"] = txtName.Text;
+                int userFromData;
+                if (int.TryParse(rows[0]["USER_ID"].ToString(), out userFromData) && userFromData == userId)
+                {
+                    rows[0]["SHOP_NAME"] = txtid.Text;
+                    rows[0]["SHOP_TELEPHONE"] = txtNumber.Text;
+                    rows[0]["SHOP_LOCATION"] = txtName.Text;
 
+                    dbc.DBAdapter.Update(dbc.DS, "shops");
 
-                dbc.DBAdapter.Update(dbc.DS, "shops");
-
-
-                dbc.DB_Open();
-                DBGrid.DataSource = dbc.PhoneTable.DefaultView;
+                    dbc.DB_Open();
+                    DBGrid.DataSource = dbc.PhoneTable.DefaultView;
+                }
+                else
+                {
+                    MessageBox.Show("변경할 수 있는 권한이 없습니다.");
+                }
             }
             else
             {
                 MessageBox.Show("해당 매장번호를 찾을 수 없습니다.");
             }
         }
+
+
 
 
         // ↑ SHOP 관리  ↓PRODUCT 관리

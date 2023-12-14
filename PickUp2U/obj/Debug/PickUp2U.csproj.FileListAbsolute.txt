@@ -150,3 +150,4 @@ C:\Users\User\Desktop\PU2U1211\PickUp2U\bin\Debug\PickUp2U.pdb
 C:\Users\User\Desktop\PU2U1211\PickUp2U\bin\Debug\Oracle.DataAccess.dll
 C:\Users\User\Desktop\PU2U1211\PickUp2U\obj\Debug\PickUp2U.csproj.CopyComplete
 C:\Users\vlcl7\Source\Repos\PickUp2U\PickUp2U\obj\Debug\PickUp2U.OrderListform.resources
+C:\Users\User\Desktop\PU2U1211\PickUp2U\obj\Debug\PickUp2U.OwnerShopform.resources
