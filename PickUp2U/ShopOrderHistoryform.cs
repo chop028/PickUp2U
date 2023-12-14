@@ -46,7 +46,12 @@ namespace PickUp2U
                 MessageBox.Show("데이터를 가져오는 중 오류가 발생했습니다: " + ex.Message);
             }
         }
-   
+        // ShopOrderHistoryform에서 주문 이력 업데이트 메서드 추가
+        public void UpdateOrderHistory()
+        {
+            DisplayOrderHistory(); // 주문 이력을 다시 가져와서 업데이트
+        }
+
 
         private void dataGridViewOrderHistory_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
@@ -66,9 +71,14 @@ namespace PickUp2U
                 {
                     progressSettingForm.Show();
                 }
+                progressSettingForm.ProgressSettingCompleted += ProgressSettingCompletedHandler;
             }
         }
 
+        private void ProgressSettingCompletedHandler(object sender, EventArgs e)
+        {
+            UpdateOrderHistory(); // 주문 이력을 업데이트
+        }
         private void ProgressSettingForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             // ProgressSettingform이 닫히면 현재의 폼을 숨깁니다.

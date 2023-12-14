@@ -57,23 +57,29 @@ namespace PickUp2U
             OwnerShop.MdiParent = this;
             OwnerShop.Show();
         }
-
+        ShopOrderHistoryform shopOrderHistory;
         private void 픽업관리ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ShopOrderHistoryform shopOrderHistoryform = new ShopOrderHistoryform();
-            shopOrderHistoryform.Show();
+         
+
+            shopOrderHistory = new ShopOrderHistoryform();
+            shopOrderHistory.MdiParent = this;
+            shopOrderHistory.Show();
         }
 
         private void 상품조회ToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
-
+        OrderListform orderList;
         private void 주문조회ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OrderListform orderListform = new OrderListform();
-            orderListform.Show();
+            orderList = new OrderListform();
+            orderList.MdiParent = this;
+            orderList.Show();
 
+           
         }
     }
+
 }
