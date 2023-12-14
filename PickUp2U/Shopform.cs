@@ -203,7 +203,8 @@ namespace PickUp2U
             }
             else
             {
-                MessageBox.Show("해당 매장번호를 찾을 수 없습니다.");
+                MessageBox.Show("해당" +
+                    " 매장번호를 찾을 수 없습니다.");
             }
         }
 
