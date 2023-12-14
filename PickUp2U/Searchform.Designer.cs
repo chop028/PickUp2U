@@ -43,7 +43,6 @@ namespace PickUp2U
             this.label1 = new System.Windows.Forms.Label();
             this.sc_btn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button7 = new System.Windows.Forms.Button();
             this.sc_in = new System.Windows.Forms.Button();
             this.sc_Productid = new System.Windows.Forms.TextBox();
             this.shop_num = new System.Windows.Forms.Label();
@@ -122,12 +121,12 @@ namespace PickUp2U
             // 
             // sc_pay
             // 
-            this.sc_pay.Location = new System.Drawing.Point(596, 483);
+            this.sc_pay.Location = new System.Drawing.Point(795, 472);
             this.sc_pay.Margin = new System.Windows.Forms.Padding(2);
             this.sc_pay.Name = "sc_pay";
-            this.sc_pay.Size = new System.Drawing.Size(126, 22);
+            this.sc_pay.Size = new System.Drawing.Size(157, 33);
             this.sc_pay.TabIndex = 35;
-            this.sc_pay.Text = "현장 결제";
+            this.sc_pay.Text = "결제";
             this.sc_pay.UseVisualStyleBackColor = true;
             this.sc_pay.Click += new System.EventHandler(this.sc_pay_Click);
             // 
@@ -203,16 +202,6 @@ namespace PickUp2U
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "상품검색";
             // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(783, 483);
-            this.button7.Margin = new System.Windows.Forms.Padding(2);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(126, 22);
-            this.button7.TabIndex = 36;
-            this.button7.Text = "즉시 결제";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
             // sc_in
             // 
             this.sc_in.Location = new System.Drawing.Point(357, 485);
@@ -279,7 +268,6 @@ namespace PickUp2U
             this.Controls.Add(this.total_amount);
             this.Controls.Add(this.discount);
             this.Controls.Add(this.shop_num);
-            this.Controls.Add(this.button7);
             this.Controls.Add(this.sc_pay);
             this.Controls.Add(this.sc_Productid);
             this.Controls.Add(this.sc_total);
@@ -296,6 +284,7 @@ namespace PickUp2U
             this.Name = "Searchform";
             this.Text = "Search";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Searchform_Load);
             ((System.ComponentModel.ISupportInitialize)(this.sc_hold)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sc_list)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -320,7 +309,6 @@ namespace PickUp2U
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button sc_btn;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button sc_in;
         private System.Windows.Forms.TextBox sc_Productid;
         private System.Windows.Forms.Label shop_num;

@@ -466,8 +466,9 @@ namespace PickUp2U
             }
         }
 
+        private void Searchform_Load(object sender, EventArgs e)
+        {
 
-
-
+        }
     }
 }
